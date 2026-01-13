@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    background-color: #0a0a0a;
+    /* brand-black */
+    color: #f4f4f5;
+    /* brand-white */
+}
+
+/* Remove a barra de scroll padrão mas mantém a funcionalidade */
+html {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+}
+
+html::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari/Opera */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Estilização da Seleção de Texto (Highlight) */
+::selection {
+    background-color: #5271FF;
+    /* brand-blue */
+    color: #ffffff;
+}
+
+/* Utilitário para texto de contorno (Outline Text) */
+.text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    color: transparent;
+}
+
+.text-outline-hover:hover {
+    -webkit-text-stroke: 0px;
+    color: #5271FF;
+    /* brand-blue (Atualizado) */
+}
