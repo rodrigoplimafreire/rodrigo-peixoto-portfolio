@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ArrowDown, Hammer, ArrowLeft } from 'lucide-react';
-import { projects, content } from '../data'; // Importei content para pegar textos gerais se precisar
+import { projects } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 import SmoothScroll from '../components/SmoothScroll';
 import { ProjectContentItem } from '../types';
 
 // --- SUB-COMPONENT: PARALLAX IMAGE ---
-const ParallaxImage = ({ src, alt, className = "" }: { src: string, alt: string, className?: string }) => {
+const ParallaxImage = ({ src, alt, className = "", imgStyle = {} }: { src: string, alt: string, className?: string, imgStyle?: React.CSSProperties }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
@@ -17,7 +17,7 @@ const ParallaxImage = ({ src, alt, className = "" }: { src: string, alt: string,
   return (
     <div ref={ref} className={`overflow-hidden relative ${className}`}>
       <motion.div style={{ y, scale }} className="w-full h-[120%] -mt-[10%] relative">
-        <img src={src} alt={alt} className="w-full h-full object-cover" />
+        <img src={src} alt={alt} className="w-full h-full object-cover" style={imgStyle} />
       </motion.div>
     </div>
   );
@@ -206,7 +206,13 @@ const ProjectDetail: React.FC = () => {
                 transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
                 className="w-full aspect-video md:aspect-[2.35/1] overflow-hidden rounded-sm mb-0 shadow-2xl"
               >
-                <ParallaxImage src={project.coverImage} alt="Cover" className="w-full h-full" />
+                {/* Imagem com suporte a ajuste de posição (coverImagePosition) */}
+                <ParallaxImage
+                  src={project.coverImage}
+                  alt="Cover"
+                  className="w-full h-full"
+                  imgStyle={project.coverImagePosition ? { objectPosition: project.coverImagePosition } : undefined}
+                />
               </motion.div>
             </div>
           </header>
@@ -228,6 +234,7 @@ const ProjectDetail: React.FC = () => {
                   if (block.type === 'text') {
                     return <TextBlock key={index} content={block.content} language={language} />;
                   }
+
                   if (block.type === 'image-full') {
                     return (
                       <div key={index} className="w-full md:w-[110%] md:-ml-[5%] relative group">
@@ -250,6 +257,37 @@ const ProjectDetail: React.FC = () => {
                       </div>
                     );
                   }
+
+                  // --- NOVO BLOCO: DIAGRAMAS (Sem corte, altura natural) ---
+                  if (block.type === 'image-diagram') {
+                    return (
+                      <div key={index} className="w-full relative group my-8">
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, margin: "-10%" }}
+                          transition={{ duration: 0.8 }}
+                          className="w-full rounded-sm overflow-hidden"
+                        >
+                          <img
+                            src={block.content}
+                            alt={block.caption?.[language] || ''}
+                            // 'h-auto' garante que a altura se ajuste à imagem, 'object-contain' evita cortes
+                            className="w-full h-auto object-contain"
+                          />
+                        </motion.div>
+                        {block.caption && (
+                          <div className="mt-4 text-center">
+                            <p className="text-[10px] font-mono text-[#0a0a0a]/60 uppercase tracking-widest inline-block">
+                              ( {block.caption[language]} )
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+                  // --------------------------------------------------------
+
                   if (block.type === 'image-grid') {
                     const gridOrientation = (block as any).orientation || 'vertical';
                     const isHorizontal = gridOrientation === 'horizontal';
@@ -265,9 +303,9 @@ const ProjectDetail: React.FC = () => {
                               viewport={{ once: true, margin: "-10%" }}
                               transition={{ duration: 0.8, delay: i * 0.2 }}
                               className={`w-full rounded-sm overflow-hidden shadow-lg 
-                                                                ${isHorizontal ? 'aspect-auto' : 'aspect-[3/4]'} 
-                                                                ${!isHorizontal && i % 2 !== 0 ? 'md:translate-y-24' : ''}
-                                                            `}
+                                                                                        ${isHorizontal ? 'aspect-auto' : 'aspect-[3/4]'} 
+                                                                                        ${!isHorizontal && i % 2 !== 0 ? 'md:translate-y-24' : ''}
+                                                                                    `}
                             >
                               <img
                                 src={img}
