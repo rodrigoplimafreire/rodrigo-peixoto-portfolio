@@ -150,14 +150,12 @@ const ProjectDetail: React.FC = () => {
 
   const projectIndex = projects.findIndex(p => p.slug === slug);
   const project = projects[projectIndex];
-  // Lógica circular para o próximo projeto
   const nextProject = projects[(projectIndex + 1) % projects.length];
 
   useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
   if (!project) return <div className="h-screen flex items-center justify-center bg-[#0a0a0a] text-white">Loading...</div>;
 
-  // VERIFICAÇÃO DE CONTEÚDO
   const hasContent = project.content && project.content.length > 0;
 
   return (
@@ -206,7 +204,6 @@ const ProjectDetail: React.FC = () => {
                 transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
                 className="w-full aspect-video md:aspect-[2.35/1] overflow-hidden rounded-sm mb-0 shadow-2xl"
               >
-                {/* Imagem com suporte a ajuste de posição (coverImagePosition) */}
                 <ParallaxImage
                   src={project.coverImage}
                   alt="Cover"
@@ -231,10 +228,12 @@ const ProjectDetail: React.FC = () => {
               {/* Content Loop */}
               <div className="flex flex-col gap-12 md:gap-32">
                 {project.content.map((block: ProjectContentItem, index: number) => {
+                  // TEXT
                   if (block.type === 'text') {
                     return <TextBlock key={index} content={block.content} language={language} />;
                   }
 
+                  // IMAGE FULL
                   if (block.type === 'image-full') {
                     return (
                       <div key={index} className="w-full md:w-[110%] md:-ml-[5%] relative group">
@@ -258,7 +257,7 @@ const ProjectDetail: React.FC = () => {
                     );
                   }
 
-                  // --- NOVO BLOCO: DIAGRAMAS (Sem corte, altura natural) ---
+                  // IMAGE DIAGRAM
                   if (block.type === 'image-diagram') {
                     return (
                       <div key={index} className="w-full relative group my-8">
@@ -272,7 +271,6 @@ const ProjectDetail: React.FC = () => {
                           <img
                             src={block.content}
                             alt={block.caption?.[language] || ''}
-                            // 'h-auto' garante que a altura se ajuste à imagem, 'object-contain' evita cortes
                             className="w-full h-auto object-contain"
                           />
                         </motion.div>
@@ -286,8 +284,79 @@ const ProjectDetail: React.FC = () => {
                       </div>
                     );
                   }
-                  // --------------------------------------------------------
 
+                  // VIDEO (SINGLE)
+                  if (block.type === 'video') {
+                    return (
+                      <div key={index} className="w-full relative group my-12">
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.98 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-10%" }}
+                          transition={{ duration: 0.8 }}
+                          className="w-full rounded-sm overflow-hidden shadow-xl bg-black"
+                        >
+                          <video
+                            src={block.content}
+                            className="w-full h-auto"
+                            controls
+                            playsInline
+                            loop
+                            autoPlay={(block as any).autoPlay}
+                            muted={(block as any).autoPlay}
+                          />
+                        </motion.div>
+                        {block.caption && (
+                          <div className="mt-4 text-center">
+                            <p className="text-[10px] font-mono text-[#0a0a0a]/60 uppercase tracking-widest inline-block">
+                              ( {block.caption[language]} )
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+
+                  // --- NOVO: VIDEO GRID ---
+                  if (block.type === 'video-grid') {
+                    const gridOrientation = (block as any).orientation || 'vertical';
+                    // No sistema de "grid" que criamos, 'vertical' significa lado-a-lado (2 colunas) em Desktop
+                    const isHorizontal = gridOrientation === 'horizontal';
+
+                    return (
+                      <div key={index} className="w-full">
+                        <div className={`grid gap-8 md:gap-16 items-start ${isHorizontal ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
+                          {block.content.map((videoUrl: string, i: number) => (
+                            <motion.div
+                              key={i}
+                              initial={{ opacity: 0, y: 50 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true, margin: "-10%" }}
+                              transition={{ duration: 0.8, delay: i * 0.2 }}
+                              className="w-full rounded-sm overflow-hidden shadow-lg bg-black aspect-video"
+                            >
+                              <video
+                                src={videoUrl}
+                                className="w-full h-full object-cover"
+                                controls
+                                playsInline
+                                loop
+                                muted={(block as any).autoPlay}
+                                autoPlay={(block as any).autoPlay}
+                              />
+                            </motion.div>
+                          ))}
+                        </div>
+                        {block.caption && (
+                          <p className="mt-12 text-center text-xs font-mono text-[#0a0a0a]/60 uppercase tracking-widest">
+                            ( {block.caption[language]} )
+                          </p>
+                        )}
+                      </div>
+                    );
+                  }
+
+                  // IMAGE GRID
                   if (block.type === 'image-grid') {
                     const gridOrientation = (block as any).orientation || 'vertical';
                     const isHorizontal = gridOrientation === 'horizontal';
@@ -333,12 +402,11 @@ const ProjectDetail: React.FC = () => {
               </div>
             </section>
           ) : (
-            // 3. COMING SOON BLOCK (Se não houver conteúdo)
             <ComingSoonBlock language={language} />
           )}
         </div>
 
-        {/* 4. FOOTER REVEAL (Navigation to Next Project) */}
+        {/* 4. FOOTER REVEAL */}
         <div className="fixed bottom-0 left-0 w-full h-[80vh] bg-[#0a0a0a] z-0 flex items-center justify-center text-white">
           <Link to={`/work/${nextProject.slug}`} className="group text-center w-full h-full flex flex-col items-center justify-center cursor-pointer relative">
             <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">

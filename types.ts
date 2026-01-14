@@ -29,7 +29,22 @@ export interface ContentItemImageGrid {
   orientation?: 'vertical' | 'horizontal';
 }
 
-export type ProjectContentItem = ContentItemText | ContentItemImageFull | ContentItemImageGrid | ContentItemImageDiagram;
+export interface ContentItemVideo {
+  type: 'video';
+  content: string;
+  caption?: LocalizedString;
+  autoPlay?: boolean;
+}
+
+export interface ContentItemVideoGrid {
+  type: 'video-grid';
+  content: string[]; // Array de URLs de vídeo
+  caption?: LocalizedString;
+  orientation?: 'vertical' | 'horizontal'; // vertical = lado a lado (2 colunas)
+  autoPlay?: boolean;
+}
+
+export type ProjectContentItem = ContentItemText | ContentItemImageFull | ContentItemImageGrid | ContentItemImageDiagram | ContentItemVideo | ContentItemVideoGrid;
 
 export interface Project {
   id: number;

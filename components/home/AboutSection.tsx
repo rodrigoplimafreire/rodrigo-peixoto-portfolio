@@ -11,7 +11,6 @@ interface AboutSectionProps {
 const AboutSection: React.FC<AboutSectionProps> = ({ t, className = "", id }) => {
     return (
         <section
-            // CORRIGIDO: Forçando bg-[#D9D9D9] diretamente
             className={`py-32 px-6 md:px-24 relative z-10 border-t border-neutral-900/5 bg-[#D9D9D9] overflow-hidden ${className}`}
             id={id}
         >
@@ -23,7 +22,6 @@ const AboutSection: React.FC<AboutSectionProps> = ({ t, className = "", id }) =>
                         whileInView={{ y: 0 }}
                         transition={{ duration: 0.5 }}
                         viewport={{ once: true }}
-                        // CORRIGIDO: Forçando text-[#5271FF] (Azul) para o label
                         className="text-[#5271FF] font-mono text-xs block tracking-widest"
                     >
                         {t.about.label}
@@ -47,10 +45,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ t, className = "", id }) =>
                             }
                             else {
                                 let cssClass = "";
-                                // Italic mantido escuro para leitura no fundo claro
                                 if (item.style === 'italic') cssClass = "font-serif italic text-neutral-900";
-
-                                // CORRIGIDO: Highlight agora usa text-[#5271FF] (Azul)
                                 if (item.style === 'highlight') cssClass = "text-[#5271FF] font-medium";
 
                                 return (
