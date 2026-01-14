@@ -44,7 +44,7 @@ export const festaNoCeu: Project = {
         // --- ATO 3: GALERIA (PÁGINAS DO LIVRO) ---
         {
             type: 'image-grid',
-            orientation: 'horizontal', // Mantido como você enviou
+            orientation: 'horizontal',
             content: [
                 '/images/projects/festa-no-ceu/page-1.png',
                 '/images/projects/festa-no-ceu/page-2.png',
@@ -68,7 +68,6 @@ export const festaNoCeu: Project = {
                 pt: 'PROCESSO CRIATIVO: ARTE COMO ORAÇÃO.\nEste livro nasceu de reflexão pessoal. A cada cena ilustrada em estilo cartoon 3D semi-realista, me reconheci no Sapo — perguntando quão sinceramente me aproximo de Deus. Usando ferramentas como Figma, Affinity e Lovable, este projeto representa minha oração, minha arte e minha vocação de evangelizar.'
             }
         },
-        // ATUALIZAÇÃO AQUI: Grid com os dois rascunhos
         {
             type: 'image-grid',
             orientation: 'horizontal',
