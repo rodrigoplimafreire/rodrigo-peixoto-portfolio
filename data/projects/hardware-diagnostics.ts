@@ -3,6 +3,7 @@ import { Project } from '../../types';
 export const hardwareDiagnostics: Project = {
     id: 3,
     slug: 'hardware-diagnostics',
+    domain: 'ux',
     title: { en: 'Hardware Diagnostics', pt: 'Hardware Diagnostics' },
     category: { en: 'Enterprise Software · Global Rollout', pt: 'Software Enterprise · Rollout Global' },
     year: '2018-2020',

@@ -1,4 +1,6 @@
-// 1. Importando os projetos individuais
+import { Project } from '../types';
+
+// 1. Imports
 import { lebi } from './projects/lebi';
 import { stateBank } from './projects/state-bank';
 import { hardwareDiagnostics } from './projects/hardware-diagnostics';
@@ -6,14 +8,23 @@ import { neomarket } from './projects/neomarket';
 import { millim } from './projects/millim';
 import { gospelTales } from './projects/gospel-tales';
 import { festaNoCeu } from './projects/festa-no-ceu';
+import { isabella } from './projects/isabella';
+import { drMarcelo } from './projects/dr-marcelo';
 
-// 2. Exportando a lista de projetos (A ordem aqui define a ordem no site)
-export const projects = [
+// 2. Lista Reorganizada (Sem o IA que Cuida)
+export const projects: Project[] = [
+    // --- Lente: Engineering & Code (Dev) ---
+    isabella,
+    drMarcelo,
+
+    // --- Lente: Strategy & UX (UX) ---
+    neomarket,
     lebi,
     stateBank,
     hardwareDiagnostics,
-    neomarket,
     millim,
+
+    // --- Lente: Illustration & Art (Art) ---
     gospelTales,
     festaNoCeu
 ];
@@ -49,7 +60,13 @@ export const content = {
         },
         work: {
             title: "WORK",
-            viewAll: "View All"
+            viewAll: "View All",
+            filters: {
+                all: "All Work",
+                dev: "Engineering & Code",
+                ux: "Strategy & UX",
+                art: "Illustration & Art"
+            }
         },
         services: {
             title: "Capabilities",
@@ -93,13 +110,11 @@ export const content = {
             cta: "Let's Talk",
             credits: "Designed & Engineered by Rodrigo Peixoto.\nPowered by React, Tailwind & Framer Motion."
         },
-        // --- CORREÇÃO AQUI ---
         nav: {
             work: "Projects",
             about: "About",
             contact: "Contact"
         },
-        // ---------------------
         sections: {
             selectedWork: "Selected Work"
         }
@@ -117,7 +132,7 @@ export const content = {
             manifesto: [
                 "Eu conecto a lacuna entre",
                 { text: "visão criativa", style: "italic" },
-                "e",
+                "and",
                 { text: "realidade técnica.", style: "italic" },
                 "Construindo produtos digitais com Estratégia, Design Systems e React. Não apenas decoração, mas uma ferramenta para",
                 { text: "influência e crescimento.", style: "highlight" }
@@ -133,7 +148,13 @@ export const content = {
         },
         work: {
             title: "PROJETOS",
-            viewAll: "Ver Todos"
+            viewAll: "Ver Todos",
+            filters: {
+                all: "Todos",
+                dev: "Engenharia & Código",
+                ux: "Estratégia & UX",
+                art: "Ilustração & Arte"
+            }
         },
         services: {
             title: "Capacidades",

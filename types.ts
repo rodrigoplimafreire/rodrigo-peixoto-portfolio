@@ -1,5 +1,7 @@
 export type Language = 'en' | 'pt';
 
+export type ProjectDomain = 'dev' | 'ux' | 'art';
+
 export interface LocalizedString {
   en: string;
   pt: string;
@@ -38,9 +40,9 @@ export interface ContentItemVideo {
 
 export interface ContentItemVideoGrid {
   type: 'video-grid';
-  content: string[]; // Array de URLs de vídeo
+  content: string[];
   caption?: LocalizedString;
-  orientation?: 'vertical' | 'horizontal'; // vertical = lado a lado (2 colunas)
+  orientation?: 'vertical' | 'horizontal';
   autoPlay?: boolean;
 }
 
@@ -49,6 +51,7 @@ export type ProjectContentItem = ContentItemText | ContentItemImageFull | Conten
 export interface Project {
   id: number;
   slug: string;
+  domain: ProjectDomain;
   title: LocalizedString;
   category: LocalizedString;
   year: string;

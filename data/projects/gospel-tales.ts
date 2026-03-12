@@ -4,6 +4,7 @@ export const gospelTales: Project = {
     // ... (parte inicial do arquivo mantida)
     id: 6,
     slug: 'gospel-tales',
+    domain: 'art',
     title: { en: 'Gospel Tales', pt: 'Gospel Tales' },
     category: { en: 'Illustration · Faith Design', pt: 'Ilustração · Design de Fé' },
     year: '2023-2025',

@@ -3,6 +3,7 @@ import { Project } from '../../types';
 export const lebi: Project = {
     id: 1,
     slug: 'lebi',
+    domain: 'ux',
     title: { en: 'Lebi', pt: 'Lebi' },
     category: { en: 'SaaS B2C · Gamification', pt: 'SaaS B2C · Gamificação' },
     year: '2024-2025',

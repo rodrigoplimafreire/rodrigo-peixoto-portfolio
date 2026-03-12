@@ -3,6 +3,7 @@ import { Project } from '../../types';
 export const neomarket: Project = {
     id: 4,
     slug: 'neomarket',
+    domain: 'ux',
     title: { en: 'Neomarket', pt: 'Neomarket' },
     category: { en: 'E-Commerce · Accessibility', pt: 'E-Commerce · Acessibilidade' },
     year: '2021',

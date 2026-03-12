@@ -415,7 +415,9 @@ const ProjectDetail: React.FC = () => {
             <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700" />
 
             <div className="relative z-10 mix-blend-difference">
-              <span className="block text-xs font-bold uppercase tracking-[0.2em] mb-4 text-[#5271FF]">Next Case</span>
+              <span className="block text-xs font-bold uppercase tracking-[0.2em] mb-4 text-[#5271FF]">
+                {language === 'en' ? 'Next Project' : 'Próximo Projeto'}
+              </span>
               <h2 className="text-[10vw] font-serif italic leading-none group-hover:translate-x-4 transition-transform duration-500 text-white">
                 {nextProject.title[language]}
               </h2>

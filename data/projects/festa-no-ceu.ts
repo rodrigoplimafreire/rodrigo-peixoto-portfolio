@@ -3,6 +3,7 @@ import { Project } from '../../types';
 export const festaNoCeu: Project = {
     id: 7,
     slug: 'festa-no-ceu',
+    domain: 'art',
     title: { en: 'Festa no Céu', pt: 'Festa no Céu' },
     category: { en: 'Children\'s Book · Christian Art', pt: 'Livro Infantil · Arte Cristã' },
     year: '2012-2025',

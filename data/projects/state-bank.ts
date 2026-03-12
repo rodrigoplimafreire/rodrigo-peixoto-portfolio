@@ -3,6 +3,7 @@ import { Project } from '../../types';
 export const stateBank: Project = {
     id: 2,
     slug: 'state-bank',
+    domain: 'ux',
     title: { en: 'State Bank', pt: 'State Bank' },
     category: { en: 'Fintech App · Strategy', pt: 'App Fintech · Estratégia' },
     year: '2024',

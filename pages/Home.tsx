@@ -11,8 +11,6 @@ import MissionSection from '../components/home/MissionSection';
 import WorkSection from '../components/home/WorkSection';
 import ServicesSection from '../components/home/ServicesSection';
 import ContactSection from '../components/home/ContactSection';
-// CORREÇÃO: O Footer está dentro de 'components/home', não na raiz de 'components'
-import Footer from '../components/home/Footer';
 
 const Home: React.FC = () => {
   const { language } = useLanguage();

@@ -3,6 +3,7 @@ import { Project } from '../../types';
 export const millim: Project = {
     id: 5,
     slug: 'millim',
+    domain: 'ux',
     title: { en: 'Millim', pt: 'Millim' },
     category: { en: 'UX Research · Strategy', pt: 'UX Research · Estratégia' },
     year: '2022-2023',
