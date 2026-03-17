@@ -46,7 +46,16 @@ export interface ContentItemVideoGrid {
   autoPlay?: boolean;
 }
 
-export type ProjectContentItem = ContentItemText | ContentItemImageFull | ContentItemImageGrid | ContentItemImageDiagram | ContentItemVideo | ContentItemVideoGrid;
+// --- NOVO: Interface para a imagem clicável ---
+export interface ContentItemImageLink {
+  type: 'image-link';
+  content: string;
+  link: string;
+  caption?: LocalizedString;
+}
+
+// --- ATUALIZADO: Adicionado ContentItemImageLink no final da união ---
+export type ProjectContentItem = ContentItemText | ContentItemImageFull | ContentItemImageGrid | ContentItemImageDiagram | ContentItemVideo | ContentItemVideoGrid | ContentItemImageLink;
 
 export interface Project {
   id: number;
