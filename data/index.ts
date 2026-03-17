@@ -10,19 +10,21 @@ import { gospelTales } from './projects/gospel-tales';
 import { festaNoCeu } from './projects/festa-no-ceu';
 import { isabella } from './projects/isabella';
 import { drMarcelo } from './projects/dr-marcelo';
+import { agendaEdu } from './projects/agenda-edu';
 
-// 2. Lista Reorganizada (Sem o IA que Cuida)
+// 2. Lista Reorganizada
 export const projects: Project[] = [
-    // --- Lente: Engineering & Code (Dev) ---
-    isabella,
-    drMarcelo,
-
     // --- Lente: Strategy & UX (UX) ---
+    agendaEdu,
     neomarket,
     lebi,
     stateBank,
     hardwareDiagnostics,
     millim,
+
+    // --- Lente: Engineering & Code (Dev) ---
+    isabella,
+    drMarcelo,
 
     // --- Lente: Illustration & Art (Art) ---
     gospelTales,
@@ -77,29 +79,25 @@ export const content = {
                     id: "01",
                     title: "Design Systems",
                     description: "Scalable architecture for digital products.",
-                    details: ["Component Libraries", "Token Architecture", "Documentation", "Governance"],
-                    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop"
+                    details: ["Component Libraries", "Token Architecture", "Documentation", "Governance"]
                 },
                 {
                     id: "02",
                     title: "UX Strategy",
                     description: "Aligning user needs with business goals.",
-                    details: ["User Research", "Information Architecture", "Journey Mapping", "Usability Testing"],
-                    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                    details: ["User Research", "Information Architecture", "Journey Mapping", "Usability Testing"]
                 },
                 {
                     id: "03",
                     title: "Front-end Dev",
                     description: "Translating design into pixel-perfect code.",
-                    details: ["React & TypeScript", "Tailwind CSS", "Framer Motion", "Performance Optimization"],
-                    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop"
+                    details: ["React & TypeScript", "Tailwind CSS", "Framer Motion", "Performance Optimization"]
                 },
                 {
                     id: "04",
                     title: "AI Prototyping",
                     description: "Accelerating discovery with artificial intelligence.",
-                    details: ["LLM Integration", "Rapid Prototyping", "Prompt Engineering", "AI-First Workflows"],
-                    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1932&auto=format&fit=crop"
+                    details: ["LLM Integration", "Rapid Prototyping", "Prompt Engineering", "AI-First Workflows"]
                 }
             ]
         },
@@ -165,29 +163,25 @@ export const content = {
                     id: "01",
                     title: "Design Systems",
                     description: "Arquitetura escalável para produtos digitais.",
-                    details: ["Bibliotecas de Componentes", "Arquitetura de Tokens", "Documentação", "Governança"],
-                    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop"
+                    details: ["Bibliotecas de Componentes", "Arquitetura de Tokens", "Documentação", "Governança"]
                 },
                 {
                     id: "02",
                     title: "Estratégia UX",
                     description: "Alinhando necessidades do usuário com objetivos de negócio.",
-                    details: ["Pesquisa com Usuários", "Arquitetura de Informação", "Mapeamento de Jornada", "Testes de Usabilidade"],
-                    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                    details: ["Pesquisa com Usuários", "Arquitetura de Informação", "Mapeamento de Jornada", "Testes de Usabilidade"]
                 },
                 {
                     id: "03",
                     title: "Front-end Dev",
                     description: "Traduzindo design em código pixel-perfect.",
-                    details: ["React & TypeScript", "Tailwind CSS", "Framer Motion", "Otimização de Performance"],
-                    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop"
+                    details: ["React & TypeScript", "Tailwind CSS", "Framer Motion", "Otimização de Performance"]
                 },
                 {
                     id: "04",
                     title: "Prototipagem IA",
                     description: "Acelerando descobertas com inteligência artificial.",
-                    details: ["Integração com LLMs", "Prototipagem Rápida", "Engenharia de Prompt", "Fluxos AI-First"],
-                    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1932&auto=format&fit=crop"
+                    details: ["Integração com LLMs", "Prototipagem Rápida", "Engenharia de Prompt", "Fluxos AI-First"]
                 }
             ]
         },

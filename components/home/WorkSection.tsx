@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { projects } from '../../data';
 import { useLanguage } from '../../context/LanguageContext';
 import { ArrowUpRight } from 'lucide-react';
@@ -34,8 +34,6 @@ const ShutterTransition: React.FC = () => {
 };
 
 // --- 2. FILTER DOCK (Componente de UI Puro) ---
-// Removemos toda a lógica de posicionamento (sticky, fixed) daqui.
-// Ele agora é apenas um bloco de botões.
 interface FilterDockProps {
     currentFilter: 'all' | ProjectDomain;
     setFilter: (filter: 'all' | ProjectDomain) => void;
@@ -93,7 +91,7 @@ const IntroCard: React.FC<IntroCardProps> = ({ currentFilter, setFilter, filters
                 </span>
 
                 {/* Título Gigante */}
-                <div className="flex flex-col md:flex-row items-baseline gap-2 md:gap-6 justify-center mb-12">
+                <div className="flex flex-col md:flex-row items-baseline gap-2 md:gap-6 justify-center mb-16">
                     <h2 className="text-[12vw] font-serif italic leading-none">
                         Selected
                     </h2>
@@ -102,14 +100,7 @@ const IntroCard: React.FC<IntroCardProps> = ({ currentFilter, setFilter, filters
                     </h2>
                 </div>
 
-                {/* Texto de Scroll */}
-                <div className="animate-bounce mb-8">
-                    <span className="text-xs font-bold uppercase tracking-widest opacity-40">
-                        Scroll to Explore & Filter
-                    </span>
-                </div>
-
-                {/* --- AQUI ESTÁ A BARRA (Estática, limpa e funcional) --- */}
+                {/* Barra de Filtros */}
                 <div className="mt-4">
                     <FilterDock
                         currentFilter={currentFilter}
@@ -222,10 +213,11 @@ const WorkSection: React.FC<WorkSectionProps> = ({ t, className = "", id }) => {
         return project.domain === filter;
     });
 
+    // Filtros reordenados para priorizar UX
     const filters = [
         { key: 'all', label: t.work.filters.all },
-        { key: 'dev', label: t.work.filters.dev },
         { key: 'ux', label: t.work.filters.ux },
+        { key: 'dev', label: t.work.filters.dev },
         { key: 'art', label: t.work.filters.art },
     ];
 
@@ -235,7 +227,6 @@ const WorkSection: React.FC<WorkSectionProps> = ({ t, className = "", id }) => {
 
             <div className="relative w-full">
 
-                {/* Capa com Filtros integrados - Sem sticky, sem bugs */}
                 <IntroCard
                     currentFilter={filter}
                     setFilter={setFilter}

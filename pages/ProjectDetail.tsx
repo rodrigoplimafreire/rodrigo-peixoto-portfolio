@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, ArrowDown, Hammer, ArrowLeft } from 'lucide-react';
+// NOTA: ArrowUpRight foi adicionado aqui nos imports do lucide-react!
+import { ArrowRight, ArrowDown, Hammer, ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { projects } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 import SmoothScroll from '../components/SmoothScroll';
@@ -119,6 +120,21 @@ const TextBlock: React.FC<{ content: any, language: 'en' | 'pt' }> = ({ content,
   const bodyText = hasTitle ? text.replace(/^([A-Z\s&]+):/, '').trim() : text;
   const paragraphs = bodyText.split('\n');
 
+  // Função inteligente para renderizar os negritos do Markdown
+  const renderWithBold = (str: string) => {
+    const parts = str.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return (
+          <strong key={index} className="font-bold text-[#0a0a0a]">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      return <span key={index}>{part}</span>;
+    });
+  };
+
   return (
     <div className="py-12 md:py-24 relative group">
       {hasTitle && (
@@ -136,7 +152,7 @@ const TextBlock: React.FC<{ content: any, language: 'en' | 'pt' }> = ({ content,
 
       <div className={`space-y-6 text-lg md:text-xl font-light text-[#0a0a0a]/80 leading-relaxed max-w-2xl ${hasTitle ? 'ml-auto' : 'mx-auto'}`}>
         {paragraphs.map((p: string, i: number) => (
-          p.trim() && <p key={i}>{p}</p>
+          p.trim() && <p key={i}>{renderWithBold(p)}</p>
         ))}
       </div>
     </div>
@@ -257,6 +273,40 @@ const ProjectDetail: React.FC = () => {
                     );
                   }
 
+                  // --- NOVO: IMAGE LINK (CLICÁVEL) ---
+                  if (block.type === 'image-link') {
+                    return (
+                      <div key={index} className="w-full md:w-[110%] md:-ml-[5%] relative group my-12">
+                        <a href={block.link} target="_blank" rel="noopener noreferrer" className="block relative cursor-pointer">
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.98 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, margin: "-10%" }}
+                            transition={{ duration: 0.8 }}
+                            className="w-full aspect-video md:aspect-[21/9] rounded-sm overflow-hidden shadow-xl border border-white/10 group-hover:border-[#5271FF] transition-colors duration-300"
+                          >
+                            <ParallaxImage src={block.content} alt="" className="w-full h-full" />
+
+                            {/* Overlay de Hover para indicar que é clicável */}
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                              <div className="bg-[#5271FF] text-white px-6 py-3 rounded-full flex items-center gap-2 text-xs font-bold uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <span>View in FigJam</span>
+                                <ArrowUpRight className="w-4 h-4" />
+                              </div>
+                            </div>
+                          </motion.div>
+                        </a>
+                        {block.caption && (
+                          <div className="absolute -bottom-8 right-0 md:right-12 max-w-xs text-right">
+                            <p className="text-[10px] font-mono text-[#0a0a0a] uppercase tracking-widest bg-white/80 backdrop-blur-sm p-2 inline-block shadow-sm">
+                              {block.caption[language]}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+
                   // IMAGE DIAGRAM
                   if (block.type === 'image-diagram') {
                     return (
@@ -317,10 +367,9 @@ const ProjectDetail: React.FC = () => {
                     );
                   }
 
-                  // --- NOVO: VIDEO GRID ---
+                  // VIDEO GRID
                   if (block.type === 'video-grid') {
                     const gridOrientation = (block as any).orientation || 'vertical';
-                    // No sistema de "grid" que criamos, 'vertical' significa lado-a-lado (2 colunas) em Desktop
                     const isHorizontal = gridOrientation === 'horizontal';
 
                     return (
@@ -363,7 +412,7 @@ const ProjectDetail: React.FC = () => {
 
                     return (
                       <div key={index} className="w-full">
-                        <div className={`grid gap-8 md:gap-16 items-center ${isHorizontal ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
+                        <div className={`grid gap-8 md:gap-16 items-start ${isHorizontal ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
                           {block.content.map((img: string, i: number) => (
                             <motion.div
                               key={i}
@@ -371,21 +420,20 @@ const ProjectDetail: React.FC = () => {
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{ once: true, margin: "-10%" }}
                               transition={{ duration: 0.8, delay: i * 0.2 }}
-                              className={`w-full rounded-sm overflow-hidden shadow-lg 
-                                                                                        ${isHorizontal ? 'aspect-auto' : 'aspect-[3/4]'} 
-                                                                                        ${!isHorizontal && i % 2 !== 0 ? 'md:translate-y-24' : ''}
-                                                                                    `}
+                              className={`w-full rounded-sm overflow-hidden shadow-lg bg-[#0a0a0a]/5 
+                                          ${!isHorizontal && i % 2 !== 0 ? 'md:translate-y-24' : ''}
+                                      `}
                             >
                               <img
                                 src={img}
                                 alt=""
-                                className={`w-full h-full object-cover transition-all duration-700 ${isHorizontal ? '' : 'grayscale hover:grayscale-0'}`}
+                                className={`w-full h-auto object-contain transition-all duration-700 ${isHorizontal ? '' : 'grayscale hover:grayscale-0'}`}
                               />
                             </motion.div>
                           ))}
                         </div>
                         {block.caption && (
-                          <p className="mt-24 text-center text-xs font-mono text-[#0a0a0a]/60 uppercase tracking-widest">
+                          <p className="mt-32 text-center text-xs font-mono text-[#0a0a0a]/60 uppercase tracking-widest">
                             ( {block.caption[language]} )
                           </p>
                         )}
