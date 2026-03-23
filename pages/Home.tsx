@@ -10,6 +10,7 @@ import AboutSection from '../components/home/AboutSection';
 import MissionSection from '../components/home/MissionSection';
 import WorkSection from '../components/home/WorkSection';
 import ServicesSection from '../components/home/ServicesSection';
+import MentorshipSection from '../components/home/MentorshipSection'; // <-- Import adicionado aqui
 import ContactSection from '../components/home/ContactSection';
 
 const Home: React.FC = () => {
@@ -45,6 +46,9 @@ const Home: React.FC = () => {
       <WorkSection t={t} className="bg-[#0a0a0a]" id="work" />
 
       <ServicesSection t={t} className="bg-[#0a0a0a]" id="services" />
+
+      {/* --- NOVA SEÇÃO DE MENTORIA --- */}
+      <MentorshipSection />
 
       <ContactSection t={t} className="bg-[#0a0a0a]" id="contact" />
 

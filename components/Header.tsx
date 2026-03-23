@@ -65,7 +65,7 @@ const Header: React.FC = () => {
                         >
                             <AnimatePresence mode='wait'>
                                 <motion.span
-                                    key={language} // A chave muda, forçando a animação
+                                    key={language}
                                     variants={textVariants}
                                     initial="initial"
                                     animate="animate"
@@ -82,11 +82,16 @@ const Header: React.FC = () => {
                             <button
                                 key={item.id}
                                 onClick={() => handleScrollTo(item.id)}
-                                className="text-xs font-bold uppercase tracking-widest hover:text-[#5271FF] transition-colors overflow-hidden"
+                                className={`text-xs font-bold uppercase tracking-widest transition-all duration-300 overflow-hidden flex items-center justify-center
+                                    ${item.id === 'contact'
+                                        ? 'bg-white text-[#0a0a0a] px-5 py-2.5 rounded-full hover:bg-[#5271FF] hover:text-white hover:scale-105 shadow-sm hover:shadow-[0_0_20px_rgba(82,113,255,0.4)]'
+                                        : 'hover:text-[#5271FF] py-2.5'
+                                    }
+                                `}
                             >
                                 <AnimatePresence mode='wait'>
                                     <motion.span
-                                        key={language + item.id} // Combinação única para animar na troca de idioma
+                                        key={language + item.id}
                                         variants={textVariants}
                                         initial="initial"
                                         animate="animate"
@@ -149,9 +154,13 @@ const Header: React.FC = () => {
                                 <button
                                     key={item.id}
                                     onClick={() => handleScrollTo(item.id)}
-                                    className="font-serif text-5xl text-white hover:text-[#5271FF] transition-colors capitalize"
+                                    className={`font-serif text-5xl transition-all duration-300 capitalize 
+                                        ${item.id === 'contact'
+                                            ? 'bg-white text-[#0a0a0a] px-10 py-4 rounded-full mt-4 hover:bg-[#5271FF] hover:text-white shadow-lg'
+                                            : 'text-white hover:text-[#5271FF]'
+                                        }
+                                    `}
                                 >
-                                    {/* No mobile, animação simples de fade ao trocar idioma */}
                                     <AnimatePresence mode='wait'>
                                         <motion.span
                                             key={language + item.id}
