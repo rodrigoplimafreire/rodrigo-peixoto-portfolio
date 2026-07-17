@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    { "source": "/jany", "destination": "https://proposta-jany.vercel.app" },
+    { "source": "/jany/:path*", "destination": "https://proposta-jany.vercel.app/:path*" },
+    { "source": "/reginato", "destination": "https://proposta-reginato.vercel.app" },
+    { "source": "/reginato/:path*", "destination": "https://proposta-reginato.vercel.app/:path*" },
+    { "source": "/alice", "destination": "https://proposta-alice.vercel.app" },
+    { "source": "/alice/:path*", "destination": "https://proposta-alice.vercel.app/:path*" },
+    { "source": "/izysoft", "destination": "https://proposta-izysoft.vercel.app" },
+    { "source": "/izysoft/:path*", "destination": "https://proposta-izysoft.vercel.app/:path*" }
+  ]
+}
