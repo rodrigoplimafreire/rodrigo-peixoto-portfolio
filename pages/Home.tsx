@@ -10,6 +10,7 @@ import AboutSection from '../components/home/AboutSection';
 import MissionSection from '../components/home/MissionSection';
 import WorkSection from '../components/home/WorkSection';
 import ServicesSection from '../components/home/ServicesSection';
+import ExperienceSection from '../components/home/ExperienceSection';
 import MentorshipSection from '../components/home/MentorshipSection'; // <-- Import adicionado aqui
 import ContactSection from '../components/home/ContactSection';
 
@@ -25,8 +26,10 @@ const Home: React.FC = () => {
     <div className="w-full bg-[#0a0a0a] text-[#f4f4f5] min-h-screen font-sans selection:bg-[#5271FF] selection:text-white cursor-default" ref={containerRef}>
 
       <SEO
-        title={language === 'en' ? 'Rodrigo Peixoto | Design Engineer' : 'Rodrigo Peixoto | Engenheiro de Design'}
-        description={t.hero.intro}
+        title={language === 'en' ? 'Senior Product Designer & Design Engineer' : 'Senior Product Designer & Design Engineer'}
+        description={language === 'en'
+          ? 'Product Designer and Design Engineer with 10+ years on the border between design systems and frontend. Three-layer token architecture, Figma to React and Storybook, WCAG 2.1 AA from the start.'
+          : 'Product Designer e Design Engineer com mais de 10 anos na fronteira entre design system e frontend. Arquitetura de tokens em 3 camadas, de Figma a React e Storybook, WCAG 2.1 AA desde o início.'}
       />
 
       {/* Grid Lines Background */}
@@ -46,6 +49,9 @@ const Home: React.FC = () => {
       <WorkSection t={t} className="bg-[#0a0a0a]" id="work" />
 
       <ServicesSection t={t} className="bg-[#0a0a0a]" id="services" />
+
+      {/* --- EXPERIÊNCIA, FORMAÇÃO E CREDENCIAIS --- */}
+      <ExperienceSection t={t} id="experience" />
 
       {/* --- NOVA SEÇÃO DE MENTORIA --- */}
       <MentorshipSection />

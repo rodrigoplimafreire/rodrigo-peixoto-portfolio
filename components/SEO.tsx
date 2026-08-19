@@ -9,7 +9,7 @@ interface SEOProps {
 
 const SEO: React.FC<SEOProps> = ({
     title,
-    description = "Senior Product Designer & Design Engineer specialized in Design Systems and React.",
+    description = "Senior Product Designer & Design Engineer. Design Systems, Design-to-Code and Accessibility (WCAG 2.1 AA). Fortaleza, Brazil — remote for LATAM, EU and US.",
     image = "/og-image.png" // Certifique-se de ter esta imagem na pasta public
 }) => {
     const siteTitle = "Rodrigo Peixoto";

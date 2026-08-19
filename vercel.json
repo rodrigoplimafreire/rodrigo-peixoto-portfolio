@@ -7,6 +7,12 @@
     { "source": "/alice", "destination": "https://proposta-alice.vercel.app" },
     { "source": "/alice/:path*", "destination": "https://proposta-alice.vercel.app/:path*" },
     { "source": "/izysoft", "destination": "https://proposta-izysoft.vercel.app" },
-    { "source": "/izysoft/:path*", "destination": "https://proposta-izysoft.vercel.app/:path*" }
+    { "source": "/izysoft/:path*", "destination": "https://proposta-izysoft.vercel.app/:path*" },
+    { "source": "/hub360", "destination": "https://proposta-hub360.vercel.app" },
+    { "source": "/hub360/:path*", "destination": "https://proposta-hub360.vercel.app/:path*" },
+    { "source": "/nazareno", "destination": "https://proposta-nazareno.vercel.app" },
+    { "source": "/nazareno/:path*", "destination": "https://proposta-nazareno.vercel.app/:path*" },
+    { "source": "/reginato-ads", "destination": "https://proposta-reginato-ads.vercel.app" },
+    { "source": "/reginato-ads/:path*", "destination": "https://proposta-reginato-ads.vercel.app/:path*" }
   ]
 }
