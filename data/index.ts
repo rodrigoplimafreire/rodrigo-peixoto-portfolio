@@ -11,10 +11,13 @@ import { festaNoCeu } from './projects/festa-no-ceu';
 import { isabella } from './projects/isabella';
 import { drMarcelo } from './projects/dr-marcelo';
 import { agendaEdu } from './projects/agenda-edu';
+import { obraNova } from './projects/obra-nova';
+import { rdEngenharia } from './projects/rd-engenharia';
 
 // 2. Lista Reorganizada
 export const projects: Project[] = [
     // --- Lente: Strategy & UX (UX) ---
+    obraNova,
     agendaEdu,
     neomarket,
     lebi,
@@ -23,6 +26,7 @@ export const projects: Project[] = [
     millim,
 
     // --- Lente: Engineering & Code (Dev) ---
+    rdEngenharia,
     isabella,
     drMarcelo,
 
