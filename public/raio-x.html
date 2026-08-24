@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raio-X Instantâneo · Veja sua próxima aula estruturada</title>
+<meta name="description" content="Cole o tópico da sua próxima aula e veja, em segundos, como ele fica estruturado: pontos-chave, analogia e pergunta de verificação.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papel:#F5F1E8;
+    --papel-alto:#FFFDF8;
+    --tinta:#1C1A17;
+    --tinta-media:#544D43;
+    --tinta-fraca:#7C7466;
+    --regua:#DED6C6;
+    --acento:#7A3E1D;
+    --serif:'Newsreader',Georgia,'Times New Roman',serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--papel);color:var(--tinta);
+    font-family:var(--serif);font-size:18px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding:0 20px;
+  }
+  .folha{max-width:660px;margin:0 auto;padding:56px 0 80px}
+  @media(min-width:720px){ body{font-size:19px} .folha{padding:88px 0 100px} }
+
+  .selo{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--tinta-fraca)}
+  h1{font-size:clamp(30px,6vw,44px);font-weight:400;line-height:1.15;letter-spacing:-.01em;
+    margin:16px 0 18px;max-width:18ch}
+  h1 em{font-style:italic;color:var(--acento)}
+  .abertura{font-size:clamp(17px,2.2vw,20px);color:var(--tinta-media);max-width:52ch}
+
+  /* ---- formulário ---- */
+  form{margin-top:36px}
+  label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--tinta-fraca);margin-bottom:10px}
+  textarea{
+    width:100%;min-height:104px;resize:vertical;
+    font-family:var(--serif);font-size:18px;line-height:1.5;color:var(--tinta);
+    background:var(--papel-alto);border:1px solid var(--regua);border-radius:4px;
+    padding:16px 18px;transition:border-color .18s ease;
+  }
+  textarea::placeholder{color:#A9A091}
+  textarea:focus{outline:none;border-color:var(--acento);box-shadow:0 0 0 3px rgba(122,62,29,.12)}
+  .botao{
+    margin-top:14px;display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--serif);font-size:18px;font-weight:500;
+    background:var(--tinta);color:var(--papel);border:1px solid var(--tinta);
+    padding:13px 26px;border-radius:3px;cursor:pointer;
+    transition:background .18s ease,color .18s ease;
+  }
+  .botao:hover:not(:disabled){background:var(--acento);border-color:var(--acento)}
+  .botao:disabled{opacity:.5;cursor:default}
+  .botao:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
+  .dica{margin-top:12px;font-size:15px;color:var(--tinta-fraca);font-style:italic}
+
+  /* ---- estados ---- */
+  [hidden]{display:none !important}
+  .carregando{margin-top:40px;padding-top:28px;border-top:1px solid var(--regua)}
+  .carregando p{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;
+    text-transform:lowercase;color:var(--tinta-fraca)}
+  .pulso{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acento);
+    margin-right:9px;vertical-align:middle;animation:pulsa 1.1s ease-in-out infinite}
+  @keyframes pulsa{0%,100%{opacity:.25}50%{opacity:1}}
+
+  .aviso{margin-top:32px;padding:18px 20px;background:var(--papel-alto);
+    border:1px solid var(--regua);border-left:3px solid var(--acento);border-radius:3px}
+  .aviso p{font-size:17px;color:var(--tinta-media)}
+
+  /* ---- resultado ---- */
+  .resultado{margin-top:48px;padding-top:36px;border-top:1px solid var(--regua)}
+  .resultado h2{font-size:clamp(24px,4.4vw,32px);font-weight:400;line-height:1.2;
+    letter-spacing:-.01em;margin-bottom:34px}
+  .bloco{margin-bottom:32px}
+  .bloco > .selo{display:block;margin-bottom:12px}
+  .bloco ol{list-style:none;counter-reset:p}
+  .bloco ol li{counter-increment:p;position:relative;padding-left:38px;margin-bottom:13px;
+    font-size:18px;line-height:1.5}
+  .bloco ol li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:2px;
+    font-family:var(--mono);font-size:12px;color:var(--acento);letter-spacing:.04em}
+  .citacao{font-style:italic;font-size:19px;line-height:1.55;color:var(--tinta);
+    border-left:2px solid var(--regua);padding-left:20px}
+  .pergunta{font-size:19px;line-height:1.5}
+
+  /* ---- CTA ---- */
+  .cta{margin-top:44px;padding:30px 26px;background:var(--tinta);color:var(--papel);border-radius:4px}
+  .cta .selo{color:rgba(245,241,232,.55)}
+  .cta p{margin:12px 0 22px;font-size:19px;line-height:1.45;max-width:40ch}
+  .cta strong{font-weight:600}
+  .cta a{display:inline-flex;align-items:center;gap:9px;background:var(--papel);color:var(--tinta);
+    font-family:var(--serif);font-size:18px;font-weight:500;text-decoration:none;
+    padding:13px 26px;border-radius:3px;transition:background .18s ease}
+  .cta a:hover{background:#fff}
+  .rodape{margin-top:52px;padding-top:22px;border-top:1px solid var(--regua);
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--tinta-fraca)}
+  .rodape a{color:var(--tinta-media)}
+
+  @media (prefers-reduced-motion:reduce){
+    .pulso{animation:none;opacity:.7}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+<main class="folha">
+
+  <div class="selo">Prévia gratuita · leva alguns segundos</div>
+  <h1>Veja sua próxima aula <em>já estruturada</em>.</h1>
+  <p class="abertura">Cole o tópico da aula que você precisa montar. Eu devolvo o esqueleto dela: os pontos que sustentam a explicação, uma analogia para abrir, e a pergunta que mostra se a turma entendeu.</p>
+
+  <form id="formulario">
+    <label for="topico">O tópico da sua próxima aula</label>
+    <textarea id="topico" name="topico" maxlength="500"
+      placeholder="Ex.: Fotossíntese para o 7º ano, turma que já viu célula mas confunde respiração com fotossíntese"></textarea>
+    <button type="submit" class="botao" id="enviar">Ver minha aula estruturada</button>
+    <p class="dica">Quanto mais contexto (série, turma, o que já foi visto), melhor fica.</p>
+  </form>
+
+  <div class="carregando" id="carregando" hidden aria-live="polite">
+    <p><span class="pulso" aria-hidden="true"></span><span id="microcopy">lendo o seu tópico</span></p>
+  </div>
+
+  <div class="aviso" id="aviso" hidden role="status">
+    <p id="aviso-texto"></p>
+  </div>
+
+  <section class="resultado" id="resultado" hidden aria-live="polite">
+    <h2 id="r-titulo"></h2>
+
+    <div class="bloco">
+      <span class="selo">Os pontos que sustentam a aula</span>
+      <ol id="r-pontos"></ol>
+    </div>
+
+    <div class="bloco">
+      <span class="selo">Uma analogia para abrir</span>
+      <p class="citacao" id="r-analogia"></p>
+    </div>
+
+    <div class="bloco">
+      <span class="selo">A pergunta que verifica o entendimento</span>
+      <p class="pergunta" id="r-pergunta"></p>
+    </div>
+
+    <div class="cta">
+      <span class="selo">O próximo passo</span>
+      <p>Isso levou alguns segundos e é só o esqueleto. Em <strong>60 minutos</strong>, a gente faz isso com a sua aula inteira: roteiro validado e um protótipo navegável nascendo na sua frente.</p>
+      <a href="#" id="cta-link" target="_blank" rel="noopener">Agendar o Raio-X da Aula · R$ 150</a>
+    </div>
+  </section>
+
+  <p class="rodape">Rodrigo Peixoto · <a href="/">rodrigopeixotolf.com.br</a></p>
+</main>
+
+<script>
+(function(){
+  var form = document.getElementById('formulario');
+  var campo = document.getElementById('topico');
+  var botao = document.getElementById('enviar');
+  var carregando = document.getElementById('carregando');
+  var microcopy = document.getElementById('microcopy');
+  var aviso = document.getElementById('aviso');
+  var avisoTexto = document.getElementById('aviso-texto');
+  var resultado = document.getElementById('resultado');
+  var ctaLink = document.getElementById('cta-link');
+
+  var WHATSAPP = '5585989179397';
+  var logIdAtual = null;
+  var timerMicrocopy = null;
+
+  var FRASES = [
+    'lendo o seu tópico',
+    'organizando a estrutura pedagógica',
+    'identificando os pontos-chave',
+    'procurando uma analogia que encaixe',
+    'montando a pergunta de verificação'
+  ];
+
+  function girarMicrocopy(){
+    var i = 0;
+    microcopy.textContent = FRASES[0];
+    timerMicrocopy = setInterval(function(){
+      i = (i + 1) % FRASES.length;
+      microcopy.textContent = FRASES[i];
+    }, 1800);
+  }
+
+  function pararMicrocopy(){
+    if (timerMicrocopy) { clearInterval(timerMicrocopy); timerMicrocopy = null; }
+  }
+
+  function mostrarAviso(texto){
+    avisoTexto.textContent = texto;
+    aviso.hidden = false;
+  }
+
+  var MENSAGENS_ERRO = {
+    topico_curto: 'Escreve um pouco mais sobre o tópico para eu conseguir estruturar.',
+    topico_longo: 'Ficou longo demais. Resuma o tópico em poucas linhas.',
+    limite_por_ip: 'Você já fez algumas prévias agora há pouco. Tenta de novo daqui a pouco.',
+    limite_diario: 'O limite de prévias de hoje foi atingido. Volta amanhã, ou me chama direto.',
+    limite_upstream: 'Muita gente gerando ao mesmo tempo. Tenta de novo em instantes.',
+    api_nao_configurada: 'A prévia está fora do ar no momento. Me chama no WhatsApp que eu faço com você.',
+    resposta_invalida: 'Não consegui estruturar dessa vez. Tenta reescrever o tópico.',
+    falha_upstream: 'Deu um problema aqui do meu lado. Tenta de novo em instantes.',
+    falha_inesperada: 'Deu um problema aqui do meu lado. Tenta de novo em instantes.'
+  };
+
+  function montarLinkWhatsApp(titulo){
+    var texto = titulo
+      ? 'Oi Rodrigo, fiz a prévia da aula "' + titulo + '" e quero agendar o Raio-X.'
+      : 'Oi Rodrigo, quero agendar o Raio-X da Aula.';
+    return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto);
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var topico = campo.value.trim();
+    if (topico.length < 3) { mostrarAviso(MENSAGENS_ERRO.topico_curto); return; }
+
+    aviso.hidden = true;
+    resultado.hidden = true;
+    botao.disabled = true;
+    carregando.hidden = false;
+    girarMicrocopy();
+
+    fetch('/api/raio-x', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topico: topico })
+    })
+    .then(function(r){ return r.json().then(function(d){ return { ok: r.ok, dados: d }; }); })
+    .then(function(res){
+      pararMicrocopy();
+      carregando.hidden = true;
+      botao.disabled = false;
+
+      if (!res.ok) {
+        mostrarAviso(MENSAGENS_ERRO[res.dados && res.dados.erro] || MENSAGENS_ERRO.falha_inesperada);
+        return;
+      }
+
+      var d = res.dados;
+
+      // Tópico vago: pede contexto em vez de inventar conteúdo.
+      if (d.suficiente === false) {
+        mostrarAviso(d.pedido_contexto);
+        campo.focus();
+        return;
+      }
+
+      document.getElementById('r-titulo').textContent = d.titulo;
+
+      var lista = document.getElementById('r-pontos');
+      lista.innerHTML = '';
+      (d.pontos_chave || []).forEach(function(p){
+        var li = document.createElement('li');
+        li.textContent = p;
+        lista.appendChild(li);
+      });
+
+      document.getElementById('r-analogia').textContent = d.analogia;
+      document.getElementById('r-pergunta').textContent = d.pergunta_verificacao;
+
+      logIdAtual = d.log_id || null;
+      ctaLink.href = montarLinkWhatsApp(d.titulo);
+
+      resultado.hidden = false;
+      resultado.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    })
+    .catch(function(){
+      pararMicrocopy();
+      carregando.hidden = true;
+      botao.disabled = false;
+      mostrarAviso(MENSAGENS_ERRO.falha_inesperada);
+    });
+  });
+
+  // Marca o clique no CTA sem atrasar a saída do usuário.
+  ctaLink.addEventListener('click', function(){
+    if (!logIdAtual) return;
+    var corpo = JSON.stringify({ acao: 'cta', log_id: logIdAtual });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon('/api/raio-x', new Blob([corpo], { type: 'application/json' }));
+    } else {
+      fetch('/api/raio-x', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: corpo,
+        keepalive: true
+      }).catch(function(){});
+    }
+  });
+})();
+</script>
+</body>
+</html>
