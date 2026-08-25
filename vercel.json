@@ -14,6 +14,7 @@
     { "source": "/nazareno/:path*", "destination": "https://proposta-nazareno.vercel.app/:path*" },
     { "source": "/reginato-ads", "destination": "https://proposta-reginato-ads.vercel.app" },
     { "source": "/reginato-ads/:path*", "destination": "https://proposta-reginato-ads.vercel.app/:path*" },
-    { "source": "/raio-x", "destination": "/raio-x.html" }
+    { "source": "/raio-x", "destination": "/raio-x.html" },
+    { "source": "/aceleradordeaulas", "destination": "/aceleradordeaulas.html" }
   ]
 }

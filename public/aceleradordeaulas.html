@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acelerador de Aulas · Do tema bruto a uma aula pronta</title>
+<meta name="description" content="Uma sessão de 60 minutos, ao vivo, com a sua próxima aula real. Você sai com o material feito e sabendo exatamente o que mudou. R$150.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://rodrigopeixoto.me/aceleradordeaulas">
+<link rel="icon" type="image/png" href="/fav-ico.png">
+
+<!-- Open Graph / WhatsApp / Instagram -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://rodrigopeixoto.me/aceleradordeaulas">
+<meta property="og:title" content="Acelerador de Aulas · Do tema bruto a uma aula pronta">
+<meta property="og:description" content="60 minutos ao vivo com a sua próxima aula real. Você sai com o material feito. R$150.">
+<!-- TROCAR: apontar para o criativo do anúncio quando ele estiver em /public -->
+<meta property="og:image" content="https://rodrigopeixoto.me/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Acelerador de Aulas · Do tema bruto a uma aula pronta">
+<meta name="twitter:description" content="60 minutos ao vivo com a sua próxima aula real. Você sai com o material feito. R$150.">
+<meta name="twitter:image" content="https://rodrigopeixoto.me/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papel:#F5F1E8;
+    --papel-alto:#FFFDF8;
+    --tinta:#1C1A17;
+    --tinta-media:#544D43;
+    --regua:#DED6C6;
+    --acento:#7A3E1D;
+    --serif:'Newsreader',Georgia,'Times New Roman',serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--papel);color:var(--tinta);
+    font-family:var(--serif);font-size:17px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    padding:0 20px;
+    min-height:100svh;
+  }
+  .folha{max-width:620px;margin:0 auto;padding:32px 0 48px}
+
+  .selo{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--tinta-media);
+  }
+
+  h1{
+    font-size:clamp(29px,8vw,46px);font-weight:400;line-height:1.12;
+    letter-spacing:-.01em;margin:14px 0 16px;max-width:15ch;
+  }
+
+  .abertura{
+    font-size:clamp(16.5px,4.4vw,20px);line-height:1.5;
+    color:var(--tinta-media);max-width:50ch;
+  }
+
+  /* ---- preço ---- */
+  .preco{
+    margin-top:22px;padding:15px 18px;
+    background:var(--papel-alto);border:1px solid var(--regua);
+    border-left:3px solid var(--acento);border-radius:3px;
+  }
+  .preco p{
+    font-size:clamp(17px,4.6vw,20px);font-weight:500;
+    line-height:1.35;color:var(--tinta);
+  }
+
+  /* ---- CTA ---- */
+  .acao{margin-top:20px}
+  .botao{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;min-height:56px;padding:15px 26px;
+    font-family:var(--serif);font-size:19px;font-weight:500;
+    background:var(--tinta);color:var(--papel);
+    border:1px solid var(--tinta);border-radius:3px;
+    text-decoration:none;
+    transition:background .18s ease,border-color .18s ease;
+  }
+  .botao:hover{background:var(--acento);border-color:var(--acento)}
+  .botao:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
+  .botao svg{flex:none}
+
+  /* ---- reforços ---- */
+  .reforcos{margin-top:26px;padding-top:20px;border-top:1px solid var(--regua);list-style:none}
+  .reforcos li{
+    position:relative;padding-left:22px;margin-bottom:11px;
+    font-size:16.5px;line-height:1.45;color:var(--tinta-media);
+  }
+  .reforcos li:last-child{margin-bottom:0}
+  .reforcos li::before{
+    content:'';position:absolute;left:2px;top:.6em;
+    width:7px;height:7px;border-radius:50%;background:var(--acento);
+  }
+
+  .assinatura{margin-top:32px;font-size:15px;color:var(--tinta-media)}
+
+  @media(min-width:640px){
+    body{font-size:18px}
+    .folha{padding:64px 0 72px}
+    .preco{margin-top:28px;padding:18px 22px}
+    .acao{margin-top:26px}
+    .botao{width:auto;display:inline-flex;font-size:20px}
+    .reforcos{margin-top:34px;padding-top:26px}
+  }
+</style>
+</head>
+<body>
+
+<main class="folha">
+
+  <span class="selo">Acelerador de Aulas com IA</span>
+
+  <h1>Do tema bruto a uma aula pronta</h1>
+
+  <p class="abertura">Uma sessão de 60 minutos com a sua próxima aula real, não com um exemplo fictício. Você sai com o material feito e sabendo exatamente o que mudou.</p>
+
+  <div class="preco">
+    <p>R$150 · 60 minutos · ao vivo, comigo</p>
+  </div>
+
+  <div class="acao">
+    <!--
+      Tracking: nao ha Meta Pixel instalado no projeto.
+      Para plugar depois, dispare o evento neste elemento (data-evento="cta-whatsapp"),
+      por exemplo: fbq('track', 'Lead') no listener de click.
+    -->
+    <a
+      class="botao"
+      data-evento="cta-whatsapp"
+      href="https://wa.me/5585989179397?text=Oi%20Rodrigo%2C%20quero%20agendar%20o%20Acelerador%20de%20Aulas%20com%20IA"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.21.89 2.39 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/>
+      </svg>
+      Falar comigo no WhatsApp
+    </a>
+  </div>
+
+  <ul class="reforcos">
+    <li>Sua aula, não um caso genérico</li>
+    <li>Material pronto ao final da sessão</li>
+    <li>Para professores e formadores</li>
+  </ul>
+
+  <p class="assinatura">Rodrigo Peixoto</p>
+
+</main>
+
+</body>
+</html>
