@@ -124,23 +124,22 @@ h1,h2,h3,h4{margin:0;font-family:var(--font-heading);font-weight:600;
 /* ── ação primária: único bloco maciço da página ──────────────── */
 .cta{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  min-height:48px;padding:14px 24px;
+  min-height:48px;padding:14px 32px;
   background:var(--color-cta);color:#2a1409;
   font-family:var(--font-heading);font-weight:600;
   font-size:16px;letter-spacing:0.07em;text-transform:uppercase;
-  text-decoration:none;border-radius:var(--radius-md);
-  border:1px solid rgba(42,20,9,0.35);
-  transition:background .16s ease;
+  text-decoration:none;border-radius:999px;border:0;
+  transition:background .16s ease,transform .16s ease;
 }
 .cta:hover{background:var(--color-cta-hover)}
 .cta:active{background:var(--color-cta-press)}
-.cta--sm{min-height:44px;padding:10px 16px;font-size:13.5px;gap:7px}
-.cta--lg{min-height:56px;padding:17px 30px;font-size:clamp(17px,1.6vw,21px);gap:12px}
+.cta--sm{min-height:44px;padding:10px 22px;font-size:13.5px;gap:7px}
+.cta--lg{min-height:58px;padding:18px 40px;font-size:clamp(17px,1.6vw,21px);gap:14px}
 .cta .seta{font-size:1.05em;line-height:1}
 
 /* ── etiquetas ────────────────────────────────────────────────── */
 .tag{display:inline-flex;align-items:center;font-size:12px;letter-spacing:0.02em;
-  padding:4px 11px;border-radius:0}
+  padding:5px 15px;border-radius:999px}
 .tag-outline{border:1px solid var(--color-accent);color:var(--color-accent-700)}
 .tag-accent{background:var(--color-accent-100);color:var(--color-accent-800)}
 
@@ -148,39 +147,52 @@ h1,h2,h3,h4{margin:0;font-family:var(--font-heading);font-weight:600;
 .pilula{font-family:var(--font-heading);font-style:italic;font-size:13px;
   letter-spacing:0.12em;text-transform:uppercase;
   background:rgba(42,20,9,0.62);border:1px solid rgba(250,243,234,0.22);
-  color:#faf3ea;padding:7px 14px;border-radius:var(--radius-md)}
+  color:#faf3ea;padding:7px 18px;border-radius:999px}
 
 /* ── campo espresso: abre e fecha a página ────────────────────── */
 .campo{position:relative;background:#2a1409;color:#faf3ea;overflow:hidden}
 .campo__luz{position:absolute;inset:0;opacity:0.95;
-  background:radial-gradient(120% 90% at 62% 8%,#c9601f 0%,#8d3a12 42%,#3d1a0b 78%,#2a1409 100%)}
-.campo__luz--fim{background:radial-gradient(110% 120% at 78% 0%,#c9601f 0%,#8d3a12 44%,#3d1a0b 80%,#2a1409 100%)}
-/* Véu de acessibilidade: no ponto quente do gradiente (#C9601F) o texto creme
-   ficava em 3.8:1, abaixo do mínimo AA. Este filtro de 25% preserva a luz
-   radial do guia e leva o corpo de texto para acima de 4.5:1. */
-.campo__veu{position:absolute;inset:0;background:rgba(42,20,9,0.25);pointer-events:none}
+  background:radial-gradient(78% 105% at 76% 46%,#d76c20 0%,#bb5619 30%,#8a3813 60%,#4d1f0c 85%,#2a1409 100%)}
+.campo__luz--fim{background:radial-gradient(85% 115% at 80% 30%,#d76c20 0%,#bb5619 30%,#8a3813 60%,#4d1f0c 85%,#2a1409 100%)}
+/* Véu de acessibilidade. O brilho fica à direita, atrás da personagem, como
+   no criativo; este degradê escurece só o lado do texto, para o corpo de
+   texto ficar acima de 4.5:1 sem apagar a luz laranja. */
+.campo__veu{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(42,20,9,0.52) 0%,rgba(42,20,9,0.34) 48%,rgba(42,20,9,0) 78%)}
+@media (max-width:859px){
+  /* Em coluna única o texto ocupa a largura toda, então o véu é uniforme. */
+  .campo__veu{background:rgba(42,20,9,0.30)}
+}
 .campo__in{position:relative;max-width:var(--max);margin:0 auto;
   padding:clamp(32px,5vw,72px) var(--edge) clamp(40px,6vw,80px)}
 
 /* ── hero: texto e a personagem da campanha ───────────────────── */
 .hero-in{display:flex;flex-wrap:wrap;align-items:flex-end;gap:0 clamp(24px,4vw,56px)}
-.hero-txt{flex:1 1 min(100%,440px)}
+.hero-txt{flex:1 1 min(100%,440px);container-type:inline-size}
 /* A personagem é a mesma do criativo: quem vem do anúncio reconhece a
    página no primeiro segundo. No celular ela entra depois do CTA, para
    não empurrar o botão para fora da primeira dobra. */
-.hero-fig{flex:0 1 min(100%,380px);margin:24px auto -40px;display:flex;justify-content:center}
-.hero-fig img{width:100%;max-width:340px;height:auto;
+.hero-fig{flex:0 1 min(100%,460px);margin:20px auto -40px;display:flex;justify-content:center}
+.hero-fig img{width:100%;max-width:420px;height:auto;
   filter:drop-shadow(0 18px 40px rgba(42,20,9,0.45))}
 @media (min-width:860px){
   .hero-in{flex-wrap:nowrap;align-items:flex-end}
-  .hero-fig{margin:0 0 calc(clamp(40px,6vw,80px) * -1);flex:0 0 clamp(300px,32vw,420px)}
+  /* Sangra até a borda do campo, como no criativo, onde ela é cortada
+     na direita. A margem negativa devolve largura para a coluna de texto. */
+  .hero-fig{margin:0 calc(var(--edge) * -1) calc(clamp(40px,6vw,80px) * -1) 0;
+    flex:0 0 clamp(340px,44vw,620px)}
   .hero-fig img{max-width:none}
 }
 
 /* ── manchete de campanha ─────────────────────────────────────── */
 .lock-script{font-family:var(--font-script);font-size:clamp(34px,10vw,60px);
   line-height:0.9;color:#e9c987;margin:0 0 -0.08em 0.06em}
-.lock-h1{font-size:clamp(42px,13vw,96px);line-height:0.94;color:#fdf7ee;margin:0}
+/* Uma linha só, como no criativo: se quebrar em duas, a coluna de texto
+   estica e abre um vazio ao lado da personagem. O corpo é medido a partir
+   da própria coluna (cqi), não da viewport, senão entre 860 e 1100px a
+   linha estoura a caixa e gera scroll horizontal. */
+.lock-h1{font-size:clamp(38px,19cqi,92px);line-height:0.94;color:#fdf7ee;margin:0;
+  white-space:nowrap}
 .lock-sub{font-family:var(--font-heading);font-weight:600;text-transform:uppercase;
   font-size:clamp(23px,5.6vw,42px);line-height:1.05;margin:20px 0 0;color:#fdf7ee}
 .lock-sub .script{font-size:1.34em;line-height:0.8;color:#f3d79a;display:inline-block}
@@ -334,11 +346,10 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
         Todo CTA carrega data-evento="cta-whatsapp" e data-origem.
         Para plugar depois: fbq('track','Lead',{origem: el.dataset.origem}).
       -->
-      <a class="cta cta--lg bp" data-evento="cta-whatsapp" data-origem="hero"
+      <a class="cta cta--lg" data-evento="cta-whatsapp" data-origem="hero"
          href="https://wa.me/5585989179397?text=Oi%20Rodrigo%2C%20quero%20agendar%20o%20Acelerador%20de%20Aulas%20com%20IA"
          target="_blank" rel="noopener noreferrer">
         Agende sua sessão <span class="seta" aria-hidden="true">&#8594;</span>
-        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       </a>
     </div>
 
@@ -488,11 +499,10 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
         </p>
         <div class="agenda-barra"><i style="width:67%"></i></div>
       </div>
-      <a class="cta bp" data-evento="cta-whatsapp" data-origem="agenda"
+      <a class="cta" data-evento="cta-whatsapp" data-origem="agenda"
          href="https://wa.me/5585989179397?text=Oi%20Rodrigo%2C%20quero%20agendar%20o%20Acelerador%20de%20Aulas%20com%20IA"
          target="_blank" rel="noopener noreferrer">
         Agende sua sessão <span class="seta" aria-hidden="true">&#8594;</span>
-        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       </a>
     </div>
   </section>
@@ -550,11 +560,10 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
     <p class="promessa" style="max-width:52ch">Me manda uma mensagem no WhatsApp. A gente marca o horário e você já chega com o tema da aula escolhido.</p>
 
     <div class="acao">
-      <a class="cta cta--lg bp bp--light" data-evento="cta-whatsapp" data-origem="fechamento"
+      <a class="cta cta--lg" data-evento="cta-whatsapp" data-origem="fechamento"
          href="https://wa.me/5585989179397?text=Oi%20Rodrigo%2C%20quero%20agendar%20o%20Acelerador%20de%20Aulas%20com%20IA"
          target="_blank" rel="noopener noreferrer">
         Agende sua sessão <span class="seta" aria-hidden="true">&#8594;</span>
-        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       </a>
       <div>
         <p class="preco" style="font-size:32px">R$ 150<span class="cent">,00</span></p>
