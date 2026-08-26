@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acelerador de Aulas · Do tema bruto a uma aula pronta</title>
-<meta name="description" content="Uma sessão de 60 minutos, ao vivo, com a sua próxima aula real. Você sai com o material feito e sabendo exatamente o que mudou. R$150.">
+<title>Acelerador de Aulas com IA · Do tema bruto a uma aula pronta</title>
+<meta name="description" content="Sessão 1:1 de 60 minutos ao vivo. Você chega com um tema e sai com um slide construído na sua frente, com a sua voz e o seu estilo. R$ 150,00.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://rodrigopeixoto.me/aceleradordeaulas">
 <link rel="icon" type="image/png" href="/fav-ico.png">
@@ -13,148 +13,551 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://rodrigopeixoto.me/aceleradordeaulas">
-<meta property="og:title" content="Acelerador de Aulas · Do tema bruto a uma aula pronta">
-<meta property="og:description" content="60 minutos ao vivo com a sua próxima aula real. Você sai com o material feito. R$150.">
-<!-- TROCAR: apontar para o criativo do anúncio quando ele estiver em /public -->
+<meta property="og:title" content="Acelerador de Aulas com IA · Do tema bruto a uma aula pronta">
+<meta property="og:description" content="Sessão 1:1 de 60 minutos ao vivo. Traga um tema, saia com a aula pronta. R$ 150,00.">
+<!-- TROCAR: subir o criativo de feed para /public/acelerador-criativo.png e apontar as duas linhas de imagem para ele -->
 <meta property="og:image" content="https://rodrigopeixoto.me/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Acelerador de Aulas · Do tema bruto a uma aula pronta">
-<meta name="twitter:description" content="60 minutos ao vivo com a sua próxima aula real. Você sai com o material feito. R$150.">
+<meta name="twitter:title" content="Acelerador de Aulas com IA · Do tema bruto a uma aula pronta">
+<meta name="twitter:description" content="Sessão 1:1 de 60 minutos ao vivo. Traga um tema, saia com a aula pronta. R$ 150,00.">
 <meta name="twitter:image" content="https://rodrigopeixoto.me/og-image.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --papel:#F5F1E8;
-    --papel-alto:#FFFDF8;
-    --tinta:#1C1A17;
-    --tinta-media:#544D43;
-    --regua:#DED6C6;
-    --acento:#7A3E1D;
-    --serif:'Newsreader',Georgia,'Times New Roman',serif;
-    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    background:var(--papel);color:var(--tinta);
-    font-family:var(--serif);font-size:17px;line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    padding:0 20px;
-    min-height:100svh;
-  }
-  .folha{max-width:620px;margin:0 auto;padding:32px 0 48px}
+/* ══════════════════════════════════════════════════════════════════
+   Acelerador de Aulas com IA
+   Design system Industry, retunado para a paleta dos criativos.
+   Tokens e classes conforme o Guia de Estilo v1.0.
+   ══════════════════════════════════════════════════════════════════ */
+:root{
+  /* superfícies */
+  --color-bg:#faf3ea;
+  --color-surface:#f2e5d3;
+  --color-text:#2a1409;
+  --color-divider:color-mix(in srgb,#2a1409 18%,transparent);
 
-  .selo{
-    font-family:var(--mono);font-size:11px;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--tinta-media);
-  }
+  /* acento: laranja queimado */
+  --color-accent:#c0561e;
+  --color-accent-100:#fdf0e6;--color-accent-200:#fbdcc4;--color-accent-300:#f5be96;
+  --color-accent-400:#ea9a67;--color-accent-500:#db7539;--color-accent-600:#c0561e;
+  --color-accent-700:#9c4217;--color-accent-800:#742f10;--color-accent-900:#3d1a0b;
 
-  h1{
-    font-size:clamp(29px,8vw,46px);font-weight:400;line-height:1.12;
-    letter-spacing:-.01em;margin:14px 0 16px;max-width:15ch;
-  }
+  /* acento 2: ouro, só no script */
+  --color-accent-2:#c99628;
+  --color-accent-2-700:#946c19;
 
-  .abertura{
-    font-size:clamp(16.5px,4.4vw,20px);line-height:1.5;
-    color:var(--tinta-media);max-width:50ch;
-  }
+  /* amarelo ação: exclusivo do CTA */
+  --color-cta:#f5c744;--color-cta-hover:#ffd76a;--color-cta-press:#dfae2c;
 
-  /* ---- preço ---- */
-  .preco{
-    margin-top:22px;padding:15px 18px;
-    background:var(--papel-alto);border:1px solid var(--regua);
-    border-left:3px solid var(--acento);border-radius:3px;
-  }
-  .preco p{
-    font-size:clamp(17px,4.6vw,20px);font-weight:500;
-    line-height:1.35;color:var(--tinta);
-  }
+  --font-heading:"Barlow Condensed",system-ui,sans-serif;
+  --font-body:"Barlow",system-ui,sans-serif;
+  --font-script:"Alex Brush",cursive;
 
-  /* ---- CTA ---- */
-  .acao{margin-top:20px}
-  .botao{
-    display:flex;align-items:center;justify-content:center;gap:10px;
-    width:100%;min-height:56px;padding:15px 26px;
-    font-family:var(--serif);font-size:19px;font-weight:500;
-    background:var(--tinta);color:var(--papel);
-    border:1px solid var(--tinta);border-radius:3px;
-    text-decoration:none;
-    transition:background .18s ease,border-color .18s ease;
-  }
-  .botao:hover{background:var(--acento);border-color:var(--acento)}
-  .botao:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
-  .botao svg{flex:none}
+  --radius-md:4px;
+  --edge:clamp(20px,5vw,64px);
+  --max:1200px;
+}
 
-  /* ---- reforços ---- */
-  .reforcos{margin-top:26px;padding-top:20px;border-top:1px solid var(--regua);list-style:none}
-  .reforcos li{
-    position:relative;padding-left:22px;margin-bottom:11px;
-    font-size:16.5px;line-height:1.45;color:var(--tinta-media);
-  }
-  .reforcos li:last-child{margin-bottom:0}
-  .reforcos li::before{
-    content:'';position:absolute;left:2px;top:.6em;
-    width:7px;height:7px;border-radius:50%;background:var(--acento);
-  }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--color-bg);color:var(--color-text);
+  font-family:var(--font-body);font-size:16px;line-height:1.55;
+  text-wrap:pretty;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+figure{margin:0}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px}
+::selection{background:color-mix(in srgb,var(--color-accent) 30%,transparent)}
 
-  .assinatura{margin-top:32px;font-size:15px;color:var(--tinta-media)}
+/* ── moldura blueprint e marcas de registro ───────────────────── */
+.bp{position:relative;border:1px solid var(--color-divider);border-radius:0}
+.bp>.corner{position:absolute;width:11px;height:11px;
+  color:color-mix(in srgb,var(--color-text) 55%,transparent)}
+.bp>.corner::before,.bp>.corner::after{content:"";position:absolute;background:currentColor}
+.bp>.corner::before{left:5px;top:0;width:1px;height:100%}
+.bp>.corner::after{top:5px;left:0;width:100%;height:1px}
+.bp>.tl{top:-6px;left:-6px}.bp>.tr{top:-6px;right:-6px}
+.bp>.bl{bottom:-6px;left:-6px}.bp>.br{bottom:-6px;right:-6px}
+.bp--light>.corner{color:rgba(250,243,234,0.6)}
 
-  @media(min-width:640px){
-    body{font-size:18px}
-    .folha{padding:64px 0 72px}
-    .preco{margin-top:28px;padding:18px 22px}
-    .acao{margin-top:26px}
-    .botao{width:auto;display:inline-flex;font-size:20px}
-    .reforcos{margin-top:34px;padding-top:26px}
-  }
+/* ── tipografia do sistema ────────────────────────────────────── */
+.cond{font-family:var(--font-heading);font-weight:600;text-transform:uppercase;
+  letter-spacing:0.005em}
+.script{font-family:var(--font-script);font-weight:400;text-transform:none;letter-spacing:0.01em}
+h1,h2,h3,h4{margin:0;font-family:var(--font-heading);font-weight:600;
+  text-transform:uppercase;line-height:1.05;letter-spacing:0.005em}
+
+/* ── cabeça de seção: numeral + rótulo + filete ───────────────── */
+.sec{max-width:var(--max);margin:0 auto;padding:clamp(48px,7vw,88px) var(--edge)}
+.sec-kicker{display:block;font-family:var(--font-heading);font-weight:600;
+  font-size:13px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--color-accent-700);margin-bottom:10px}
+.rule{height:1px;border:0;margin:0;background:var(--color-divider)}
+.sec-title{font-size:clamp(29px,5.6vw,48px);line-height:1.04;margin:24px 0 0;max-width:24ch}
+.sec-lead{font-size:17px;line-height:1.6;max-width:58ch;margin:16px 0 0;
+  color:color-mix(in srgb,var(--color-text) 78%,transparent)}
+
+/* ── grade ────────────────────────────────────────────────────── */
+.grid{display:grid;gap:clamp(22px,3vw,40px);margin-top:clamp(32px,4vw,52px)}
+.g-240{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.g-220{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+
+/* ── barra fixa com o CTA sempre ao alcance ───────────────────── */
+.topo{position:sticky;top:0;z-index:30;
+  background:color-mix(in srgb,#faf3ea 92%,transparent);
+  backdrop-filter:blur(6px);border-bottom:1px solid var(--color-divider)}
+.topo-in{max-width:var(--max);margin:0 auto;padding:10px var(--edge);
+  display:flex;align-items:center;gap:12px}
+.topo-marca{font-family:var(--font-heading);font-weight:600;font-size:17px;
+  text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap}
+.topo-rot{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;
+  color:var(--color-accent-700);white-space:nowrap}
+.topo .cta{margin-left:auto}
+
+/* ── ação primária: único bloco maciço da página ──────────────── */
+.cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:14px 24px;
+  background:var(--color-cta);color:#2a1409;
+  font-family:var(--font-heading);font-weight:600;
+  font-size:16px;letter-spacing:0.07em;text-transform:uppercase;
+  text-decoration:none;border-radius:var(--radius-md);
+  border:1px solid rgba(42,20,9,0.35);
+  transition:background .16s ease;
+}
+.cta:hover{background:var(--color-cta-hover)}
+.cta:active{background:var(--color-cta-press)}
+.cta--sm{min-height:44px;padding:10px 16px;font-size:13.5px;gap:7px}
+.cta--lg{min-height:56px;padding:17px 30px;font-size:clamp(17px,1.6vw,21px);gap:12px}
+.cta .seta{font-size:1.05em;line-height:1}
+
+/* ── etiquetas ────────────────────────────────────────────────── */
+.tag{display:inline-flex;align-items:center;font-size:12px;letter-spacing:0.02em;
+  padding:4px 11px;border-radius:0}
+.tag-outline{border:1px solid var(--color-accent);color:var(--color-accent-700)}
+.tag-accent{background:var(--color-accent-100);color:var(--color-accent-800)}
+
+/* pílula sobre campo escuro: única peça que aceita itálico */
+.pilula{font-family:var(--font-heading);font-style:italic;font-size:13px;
+  letter-spacing:0.12em;text-transform:uppercase;
+  background:rgba(42,20,9,0.62);border:1px solid rgba(250,243,234,0.22);
+  color:#faf3ea;padding:7px 14px;border-radius:var(--radius-md)}
+
+/* ── campo espresso: abre e fecha a página ────────────────────── */
+.campo{position:relative;background:#2a1409;color:#faf3ea;overflow:hidden}
+.campo__luz{position:absolute;inset:0;opacity:0.95;
+  background:radial-gradient(120% 90% at 62% 8%,#c9601f 0%,#8d3a12 42%,#3d1a0b 78%,#2a1409 100%)}
+.campo__luz--fim{background:radial-gradient(110% 120% at 78% 0%,#c9601f 0%,#8d3a12 44%,#3d1a0b 80%,#2a1409 100%)}
+/* Véu de acessibilidade: no ponto quente do gradiente (#C9601F) o texto creme
+   ficava em 3.8:1, abaixo do mínimo AA. Este filtro de 25% preserva a luz
+   radial do guia e leva o corpo de texto para acima de 4.5:1. */
+.campo__veu{position:absolute;inset:0;background:rgba(42,20,9,0.25);pointer-events:none}
+.campo__in{position:relative;max-width:var(--max);margin:0 auto;
+  padding:clamp(32px,5vw,72px) var(--edge) clamp(40px,6vw,80px)}
+
+/* ── manchete de campanha ─────────────────────────────────────── */
+.lock-script{font-family:var(--font-script);font-size:clamp(34px,10vw,60px);
+  line-height:0.9;color:#e9c987;margin:0 0 -0.08em 0.06em}
+.lock-h1{font-size:clamp(42px,13vw,96px);line-height:0.94;color:#fdf7ee;margin:0}
+.lock-sub{font-family:var(--font-heading);font-weight:600;text-transform:uppercase;
+  font-size:clamp(23px,5.6vw,42px);line-height:1.05;margin:20px 0 0;color:#fdf7ee}
+.lock-sub .script{font-size:1.34em;line-height:0.8;color:#f3d79a;display:inline-block}
+
+.promessa{font-size:17px;line-height:1.6;max-width:50ch;margin:18px 0 0;
+  color:rgba(253,247,238,0.92)}
+.reforco{font-family:var(--font-heading);font-size:13px;letter-spacing:0.06em;
+  text-transform:uppercase;margin:20px 0 0;color:rgba(253,247,238,0.92)}
+
+/* ── bloco de preço, sempre colado ao CTA ─────────────────────── */
+.acao{display:flex;flex-wrap:wrap;align-items:center;gap:18px clamp(20px,3vw,36px);
+  margin-top:28px}
+.preco{font-family:var(--font-heading);font-weight:600;font-size:44px;line-height:1;
+  margin:0;font-feature-settings:'tnum' 1}
+.preco .cent{font-size:0.5em;vertical-align:0.62em}
+.preco-nota{font-size:13.5px;margin:6px 0 0;letter-spacing:0.02em}
+.campo .preco{color:#fdf7ee}
+.campo .preco-nota{color:rgba(253,247,238,0.90)}
+
+/* ── cards de objeção e células numeradas ─────────────────────── */
+.cel{padding:24px}
+.cel-rot{display:block;font-family:var(--font-heading);font-weight:600;font-size:13px;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:10px}
+.cel-num{display:block;font-family:var(--font-heading);font-weight:600;font-size:34px;
+  line-height:1;color:var(--color-accent);margin-bottom:12px;font-feature-settings:'tnum' 1}
+.cel-titulo{font-size:22px;line-height:1.1;margin:0}
+.cel-texto{font-size:15.5px;line-height:24px;margin:12px 0 0;
+  color:color-mix(in srgb,var(--color-text) 80%,transparent)}
+
+/* ── citação de bloco ─────────────────────────────────────────── */
+.pull{font-family:var(--font-heading);font-weight:600;text-transform:uppercase;
+  font-size:clamp(20px,3.4vw,28px);line-height:1.15;margin:clamp(32px,4vw,52px) 0 0;
+  max-width:36ch;color:var(--color-accent-800);
+  border-left:3px solid var(--color-accent);padding-left:18px}
+
+/* ── folha do roteiro ─────────────────────────────────────────── */
+.folha{margin-top:clamp(28px,4vw,40px)}
+.folha-cab{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--color-divider);
+  font-family:var(--font-heading);font-weight:600;font-size:13px;
+  letter-spacing:0.09em;text-transform:uppercase}
+.folha-cab span{padding:11px 20px;line-height:22px}
+.folha-cab span+span{border-left:1px solid var(--color-divider);white-space:nowrap;
+  color:color-mix(in srgb,var(--color-text) 70%,transparent)}
+.folha-cab .flex{flex:1;min-width:14ch}
+.etapa{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 22px;
+  padding:20px;border-bottom:1px solid var(--color-divider)}
+.etapa:last-of-type{border-bottom:0}
+.etapa-h{font-family:var(--font-heading);font-weight:600;font-size:13px;letter-spacing:0.09em;
+  color:var(--color-accent-700);font-feature-settings:'tnum' 1;flex:0 0 62px}
+.etapa-t{font-size:23px;line-height:1.1;margin:0;flex:1 1 min(100%,170px)}
+.etapa-d{font-size:15.5px;line-height:24px;margin:0;flex:1 1 min(100%,300px);
+  color:color-mix(in srgb,var(--color-text) 80%,transparent)}
+.folha-pe{margin:0;padding:12px 20px;border-top:1px solid var(--color-divider);
+  font-size:13px;line-height:22px;color:color-mix(in srgb,var(--color-text) 72%,transparent)}
+
+/* ── FAQ ──────────────────────────────────────────────────────── */
+.faq{max-width:92ch;margin-top:8px}
+.faq details{border-bottom:1px solid var(--color-divider)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;
+  gap:18px;align-items:baseline;padding:18px 0;min-height:44px;
+  font-family:var(--font-heading);font-weight:600;text-transform:uppercase;
+  font-size:19px;line-height:1.15}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--color-accent-700)}
+.faq summary .mais{color:var(--color-accent);font-size:24px;line-height:1;flex:none}
+.faq details[open] summary .mais{transform:rotate(45deg)}
+.faq p{font-size:16px;line-height:26px;margin:0 0 20px;max-width:66ch;
+  color:color-mix(in srgb,var(--color-text) 82%,transparent)}
+
+/* ── agenda ───────────────────────────────────────────────────── */
+.agenda{padding:clamp(22px,3vw,34px);display:flex;flex-wrap:wrap;
+  gap:22px clamp(24px,3vw,44px);align-items:center}
+.agenda-barra{height:8px;background:var(--color-accent-200);margin-top:12px}
+.agenda-barra i{display:block;height:100%;background:var(--color-accent)}
+
+/* ── rodapé, sem links de saída ───────────────────────────────── */
+.rodape{max-width:var(--max);margin:0 auto;padding:28px var(--edge) 44px;
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+  font-size:13px;color:color-mix(in srgb,var(--color-text) 70%,transparent)}
+
+@media (max-width:560px){
+  .topo-rot{display:none}
+  .cel{padding:20px}
+  .etapa{padding:18px 16px}
+  .folha-cab span{padding:10px 16px}
+  .folha-cab span+span:nth-child(n+3){display:none}
+}
 </style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2486425151839220');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 </head>
 <body>
 
-<main class="folha">
-
-  <span class="selo">Acelerador de Aulas com IA</span>
-
-  <h1>Do tema bruto a uma aula pronta</h1>
-
-  <p class="abertura">Uma sessão de 60 minutos com a sua próxima aula real, não com um exemplo fictício. Você sai com o material feito e sabendo exatamente o que mudou.</p>
-
-  <div class="preco">
-    <p>R$150 · 60 minutos · ao vivo, comigo</p>
-  </div>
-
-  <div class="acao">
-    <!--
-      Tracking: nao ha Meta Pixel instalado no projeto.
-      Para plugar depois, dispare o evento neste elemento (data-evento="cta-whatsapp"),
-      por exemplo: fbq('track', 'Lead') no listener de click.
-    -->
-    <a
-      class="botao"
-      data-evento="cta-whatsapp"
-      href="https://wa.me/5585989179397?text=Oi%20Rodrigo%2C%20quero%20agendar%20o%20Acelerador%20de%20Aulas%20com%20IA"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.21.89 2.39 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/>
-      </svg>
-      Falar comigo no WhatsApp
+<!-- ══ barra fixa: mantém a ação ao alcance em qualquer scroll ══ -->
+<header class="topo">
+  <div class="topo-in">
+    <span class="topo-marca">Rodrigo Peixoto</span>
+    <span class="topo-rot">Acelerador de Aulas com IA</span>
+    <a class="cta cta--sm" data-evento="cta-whatsapp" data-origem="topo"
+       href="https://wa.me/5585989179397?text=Oi%20Rodrigo%2C%20quero%20agendar%20o%20Acelerador%20de%20Aulas%20com%20IA"
+       target="_blank" rel="noopener noreferrer">
+      Agende sua sessão <span class="seta" aria-hidden="true">&#8594;</span>
     </a>
   </div>
+</header>
 
-  <ul class="reforcos">
-    <li>Sua aula, não um caso genérico</li>
-    <li>Material pronto ao final da sessão</li>
-    <li>Para professores e formadores</li>
-  </ul>
+<main>
 
-  <p class="assinatura">Rodrigo Peixoto</p>
+<!-- ══ 00 · abertura ══ -->
+<section class="campo">
+  <div class="campo__luz"></div>
+  <div class="campo__veu"></div>
+  <div class="campo__in">
+
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px">
+      <span class="pilula">Ao vivo com IA</span>
+      <span class="pilula">Para professores &amp; formadores</span>
+    </div>
+
+    <p class="lock-script">Acelerador de</p>
+    <h1 class="lock-h1">Aulas com IA</h1>
+    <p class="lock-sub">Do tema bruto a uma <span class="script">aula pronta</span></p>
+
+    <p class="promessa">Sessão 1:1 de 60 minutos. Você chega com um tema e sai com um slide construído na sua frente, com a sua voz, o seu estilo e o método para repetir sozinho na próxima aula.</p>
+
+    <div class="acao">
+      <div>
+        <p class="preco">R$ 150<span class="cent">,00</span></p>
+        <p class="preco-nota">Investimento único · 60 min · 1:1</p>
+      </div>
+      <!--
+        Tracking: nao ha Meta Pixel instalado no projeto.
+        Todo CTA carrega data-evento="cta-whatsapp" e data-origem.
+        Para plugar depois: fbq('track','Lead',{origem: el.dataset.origem}).
+      -->
+      <a class="cta cta--lg bp" data-evento="cta-whatsapp" data-origem="hero"
+         href="https://wa.me/5585989179397?text=Oi%20Rodrigo%2C%20quero%20agendar%20o%20Acelerador%20de%20Aulas%20com%20IA"
+         target="_blank" rel="noopener noreferrer">
+        Agende sua sessão <span class="seta" aria-hidden="true">&#8594;</span>
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </a>
+    </div>
+
+    <p class="reforco">Sem curso gravado · sem playlist para assistir depois · trabalho feito junto</p>
+  </div>
+</section>
+
+<!-- ══ 01 · o problema ══ -->
+<section class="sec">
+  <span class="sec-kicker">01 · O problema real</span>
+  <hr class="rule">
+  <h2 class="sec-title">O medo não é a IA. É a aula sair genérica.</h2>
+  <p class="sec-lead">Quem ensina bem tem didática própria, e nenhum texto padrão de chatbot carrega isso. É por aí que a maioria desiste da IA depois da segunda tentativa.</p>
+
+  <div class="grid g-240">
+    <div class="bp cel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="cel-rot">Objeção 01</span>
+      <h3 class="cel-titulo">“Vai ficar com cara de ChatGPT”</h3>
+      <p class="cel-texto">O texto sai correto e sem alma: nenhum exemplo seu, nenhuma analogia sua, nenhuma pergunta que só você faria na sala.</p>
+    </div>
+    <div class="bp cel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="cel-rot">Objeção 02</span>
+      <h3 class="cel-titulo">“É mais um curso que eu não vou ver”</h3>
+      <p class="cel-texto">Fadiga de infoproduto é justa. A pasta de aulas gravadas já está cheia. O que falta é alguém sentar e fazer com você.</p>
+    </div>
+    <div class="bp cel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="cel-rot">Objeção 03</span>
+      <h3 class="cel-titulo">“Preparar aula consome minha semana”</h3>
+      <p class="cel-texto">Pesquisar, estruturar, montar slide, revisar. O tempo vai embora na parte mecânica, não na parte em que você é bom.</p>
+    </div>
+  </div>
+
+  <p class="pull">Isto é uma consultoria prática ao vivo. O trabalho pesado é feito junto, na hora.</p>
+</section>
+
+<!-- ══ 02 · como funciona ══ -->
+<section class="sec" style="padding-top:0">
+  <span class="sec-kicker">02 · Como funciona</span>
+  <hr class="rule">
+
+  <div class="bp folha">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div class="folha-cab">
+      <span class="flex">Sessão 60' · roteiro operacional</span>
+      <span>AA-01</span>
+      <span>1:1 ao vivo</span>
+      <span>Folha 01 de 01</span>
+    </div>
+
+    <div class="etapa">
+      <span class="etapa-h">0'–10'</span>
+      <h3 class="etapa-t">Diagnóstico</h3>
+      <p class="etapa-d">O que você ensina, para quem e em que formato. Sem isso, qualquer prompt devolve aula de ninguém.</p>
+    </div>
+    <div class="etapa">
+      <span class="etapa-h">10'–30'</span>
+      <h3 class="etapa-t">Demonstração</h3>
+      <p class="etapa-d">“Monta um slide para eu ver.” Você traz o tema e eu construo na tela, ao vivo, com você olhando cada decisão.</p>
+    </div>
+    <div class="etapa">
+      <span class="etapa-h">30'–60'</span>
+      <h3 class="etapa-t">Como eu faço</h3>
+      <p class="etapa-d">Abro o método: Claude Design para fixar identidade, voz e estilo da sua aula; Claude Chat para pesquisar e produzir dentro desse padrão. Você replica na semana seguinte.</p>
+    </div>
+
+    <p class="folha-pe">A ordem é fixa porque o diagnóstico alimenta a demonstração, e a demonstração é o que torna o método reproduzível.</p>
+  </div>
+</section>
+
+<!-- ══ 03 · entregáveis ══ -->
+<section class="sec" style="padding-top:0">
+  <span class="sec-kicker">03 · O que você leva</span>
+  <hr class="rule">
+
+  <div class="grid g-220">
+    <div class="bp cel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="cel-num">01</span>
+      <h3 class="cel-titulo">O slide construído na sessão</h3>
+      <p class="cel-texto">Pronto para usar na próxima turma. Não é um exemplo, é a sua aula.</p>
+    </div>
+    <div class="bp cel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="cel-num">02</span>
+      <h3 class="cel-titulo">A identidade da sua aula</h3>
+      <p class="cel-texto">Voz, estilo e padrão visual definidos, para tudo o que vier depois sair com a sua cara.</p>
+    </div>
+    <div class="bp cel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="cel-num">03</span>
+      <h3 class="cel-titulo">O roteiro do método</h3>
+      <p class="cel-texto">A sequência que usei na sua frente, escrita, para você repetir sem depender de mim.</p>
+    </div>
+    <div class="bp cel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span class="cel-num">04</span>
+      <h3 class="cel-titulo">A gravação da sessão</h3>
+      <p class="cel-texto">Para rever a decisão exata quando travar no meio de uma aula nova.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 · quem conduz ══ -->
+<section class="sec" style="padding-top:0">
+  <span class="sec-kicker">04 · Quem conduz</span>
+  <hr class="rule">
+  <h2 class="sec-title" style="margin-top:22px">Rodrigo Peixoto</h2>
+  <p class="script" style="font-size:clamp(28px,7vw,38px);line-height:1;color:var(--color-accent-700);margin:8px 0 0">não ensino IA, ensino a sua aula a ficar pronta</p>
+  <p class="sec-lead" style="max-width:54ch">Trabalho com professores, educadores e formadores que já sabem ensinar e só perdem tempo na produção. Na sessão eu não passo teoria: eu opero as ferramentas na sua frente, com o seu tema, e explico cada escolha enquanto a aula é montada.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
+    <span class="tag tag-outline">Claude Design</span>
+    <span class="tag tag-outline">Claude Chat</span>
+    <span class="tag tag-outline">Design instrucional</span>
+    <span class="tag tag-accent">1:1 ao vivo</span>
+  </div>
+</section>
+
+<!--
+  ══ AGENDA · desativada ═════════════════════════════════════════
+  Bloco pronto, fora do ar de propósito. Ele só deve entrar com
+  numero de vagas REAL da sua agenda. O guia de estilo proibe
+  contagem falsa, entao o cronometro regressivo do rascunho foi
+  removido: ele reiniciava sozinho toda semana.
+  Para ligar: remova este comentario, ajuste os dois numeros e o
+  width da barra.
+
+  <section class="sec" style="padding-top:0">
+    <div class="bp agenda">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="flex:1 1 min(100%,320px)">
+        <span class="cel-rot">Agenda da semana</span>
+        <h3 style="font-size:clamp(23px,4vw,32px);line-height:1.08;margin:0">Atendo poucas sessões por semana. A agenda é minha, não é escassez de marketing.</h3>
+      </div>
+      <div style="flex:1 1 min(100%,240px)">
+        <p style="display:flex;align-items:baseline;gap:10px;margin:0;font-family:var(--font-heading);font-weight:600;font-feature-settings:'tnum' 1">
+          <span style="font-size:44px;line-height:1;color:var(--color-accent)">2</span>
+          <span style="font-size:16px;letter-spacing:0.06em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 72%,transparent)">de 6 vagas livres</span>
+        </p>
+        <div class="agenda-barra"><i style="width:67%"></i></div>
+      </div>
+      <a class="cta bp" data-evento="cta-whatsapp" data-origem="agenda"
+         href="https://wa.me/5585989179397?text=Oi%20Rodrigo%2C%20quero%20agendar%20o%20Acelerador%20de%20Aulas%20com%20IA"
+         target="_blank" rel="noopener noreferrer">
+        Agende sua sessão <span class="seta" aria-hidden="true">&#8594;</span>
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </a>
+    </div>
+  </section>
+-->
+
+<!--
+  ══ AULAS FEITAS EM SESSAO · desativada ═════════════════════════
+  O rascunho trazia tres molduras vazias com o texto "arraste aqui
+  os prints". Placeholder vazio em pagina de anuncio derruba
+  conversao, entao a secao sai do ar ate existirem imagens reais.
+  Me mande 3 prints e eu religo com legenda de tema, formato e
+  publico de cada aula.
+-->
+
+<!-- ══ 05 · FAQ ══ -->
+<section class="sec" style="padding-top:0">
+  <span class="sec-kicker">05 · Perguntas diretas</span>
+  <hr class="rule">
+
+  <div class="faq">
+    <details>
+      <summary>A aula não vai ficar com cara de robô? <span class="mais" aria-hidden="true">+</span></summary>
+      <p>Só fica se você pedir aula genérica. Os primeiros 10 minutos existem justamente para registrar o que é seu: público, formato, exemplos, jeito de explicar. A identidade que montamos passa a limitar tudo o que a IA devolve depois.</p>
+    </details>
+    <details>
+      <summary>É um curso gravado? <span class="mais" aria-hidden="true">+</span></summary>
+      <p>Não. São 60 minutos ao vivo, só nós dois, com a sua aula sendo construída. Nada para assistir depois. A única gravação que existe é a da sua própria sessão.</p>
+    </details>
+    <details>
+      <summary>Preciso saber usar IA? <span class="mais" aria-hidden="true">+</span></summary>
+      <p>Não. Quem opera as ferramentas na sessão sou eu, com você acompanhando. Se você nunca abriu um chat de IA, melhor ainda: aprende o caminho certo antes de criar vício de prompt.</p>
+    </details>
+    <details>
+      <summary>Serve para o meu formato de aula? <span class="mais" aria-hidden="true">+</span></summary>
+      <p>Serve para aula presencial, ao vivo online, treinamento corporativo, curso gravado e oficina. O diagnóstico começa exatamente por aí: o que você ensina, para quem e em que formato.</p>
+    </details>
+    <details>
+      <summary>Dá tempo de fazer algo útil em 60 minutos? <span class="mais" aria-hidden="true">+</span></summary>
+      <p>O roteiro é cronometrado por isso. Em 20 minutos existe slide na tela; nos 30 finais você entende como aquilo foi feito. Sessão sem entrega concreta é sessão perdida.</p>
+    </details>
+    <details>
+      <summary>E depois da sessão? <span class="mais" aria-hidden="true">+</span></summary>
+      <p>Você sai com material para repetir sozinho. Se quiser aprofundar em mentoria, conversamos. Mas a sessão de 60 minutos se resolve por si, e é assim que ela é vendida.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ══ 06 · fechamento ══ -->
+<section class="campo">
+  <div class="campo__luz campo__luz--fim"></div>
+  <div class="campo__veu"></div>
+  <div class="campo__in">
+    <p class="lock-script" style="font-size:clamp(30px,8vw,48px)">Traga um tema</p>
+    <h2 class="lock-h1" style="font-size:clamp(34px,10vw,72px);line-height:0.98;max-width:20ch">Saia com a aula pronta</h2>
+    <p class="promessa" style="max-width:52ch">Uma mensagem no WhatsApp, escolhemos o horário e você já chega na sessão com o tema definido.</p>
+
+    <div class="acao">
+      <a class="cta cta--lg bp bp--light" data-evento="cta-whatsapp" data-origem="fechamento"
+         href="https://wa.me/5585989179397?text=Oi%20Rodrigo%2C%20quero%20agendar%20o%20Acelerador%20de%20Aulas%20com%20IA"
+         target="_blank" rel="noopener noreferrer">
+        Agende sua sessão <span class="seta" aria-hidden="true">&#8594;</span>
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </a>
+      <div>
+        <p class="preco" style="font-size:32px">R$ 150<span class="cent">,00</span></p>
+        <p class="preco-nota" style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px">60 min · 1:1 · ao vivo</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 </main>
+
+<footer class="rodape">
+  <span>Rodrigo Peixoto · Acelerador de Aulas com IA</span>
+  <span>rodrigopeixoto.me/aceleradordeaulas</span>
+</footer>
+
+<script>
+// Dispara o Lead do Meta Pixel em qualquer CTA da página, sem atrasar
+// a saída para o WhatsApp (target="_blank" já abre em nova aba).
+document.querySelectorAll('[data-evento="cta-whatsapp"]').forEach(function (el) {
+  el.addEventListener('click', function () {
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', { content_name: 'acelerador-de-aulas', origem: el.dataset.origem || '' });
+    }
+  });
+});
+</script>
 
 </body>
 </html>
