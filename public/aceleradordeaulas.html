@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Acelerador de Aulas com IA · Do tema bruto a uma aula pronta</title>
-<meta name="description" content="Sessão 1:1 de 60 minutos ao vivo. Você chega com um tema e sai com um slide construído na sua frente, com a sua voz e o seu estilo. R$ 150,00.">
+<meta name="description" content="Uma hora ao vivo, só você e eu. Você chega com o tema da próxima aula e sai com o material pronto, no seu jeito de ensinar. Para professores e formadores. R$ 150,00.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://rodrigopeixoto.me/aceleradordeaulas">
 <link rel="icon" type="image/png" href="/fav-ico.png">
@@ -14,13 +14,15 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://rodrigopeixoto.me/aceleradordeaulas">
 <meta property="og:title" content="Acelerador de Aulas com IA · Do tema bruto a uma aula pronta">
-<meta property="og:description" content="Sessão 1:1 de 60 minutos ao vivo. Traga um tema, saia com a aula pronta. R$ 150,00.">
-<!-- TROCAR: subir o criativo de feed para /public/acelerador-criativo.png e apontar as duas linhas de imagem para ele -->
-<meta property="og:image" content="https://rodrigopeixoto.me/og-image.png">
+<meta property="og:description" content="Uma hora ao vivo com a sua próxima aula. Você sai com o material pronto, no seu jeito de ensinar. R$ 150,00.">
+<meta property="og:image" content="https://rodrigopeixoto.me/acelerador-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="631">
+<meta property="og:image:alt" content="Acelerador de Aulas com IA. Do tema bruto a uma aula pronta. R$ 150,00, 60 minutos.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Acelerador de Aulas com IA · Do tema bruto a uma aula pronta">
-<meta name="twitter:description" content="Sessão 1:1 de 60 minutos ao vivo. Traga um tema, saia com a aula pronta. R$ 150,00.">
-<meta name="twitter:image" content="https://rodrigopeixoto.me/og-image.png">
+<meta name="twitter:description" content="Uma hora ao vivo com a sua próxima aula. Você sai com o material pronto, no seu jeito de ensinar. R$ 150,00.">
+<meta name="twitter:image" content="https://rodrigopeixoto.me/acelerador-og.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -160,6 +162,21 @@ h1,h2,h3,h4{margin:0;font-family:var(--font-heading);font-weight:600;
 .campo__in{position:relative;max-width:var(--max);margin:0 auto;
   padding:clamp(32px,5vw,72px) var(--edge) clamp(40px,6vw,80px)}
 
+/* ── hero: texto e a personagem da campanha ───────────────────── */
+.hero-in{display:flex;flex-wrap:wrap;align-items:flex-end;gap:0 clamp(24px,4vw,56px)}
+.hero-txt{flex:1 1 min(100%,440px)}
+/* A personagem é a mesma do criativo: quem vem do anúncio reconhece a
+   página no primeiro segundo. No celular ela entra depois do CTA, para
+   não empurrar o botão para fora da primeira dobra. */
+.hero-fig{flex:0 1 min(100%,380px);margin:24px auto -40px;display:flex;justify-content:center}
+.hero-fig img{width:100%;max-width:340px;height:auto;
+  filter:drop-shadow(0 18px 40px rgba(42,20,9,0.45))}
+@media (min-width:860px){
+  .hero-in{flex-wrap:nowrap;align-items:flex-end}
+  .hero-fig{margin:0 0 calc(clamp(40px,6vw,80px) * -1);flex:0 0 clamp(300px,32vw,420px)}
+  .hero-fig img{max-width:none}
+}
+
 /* ── manchete de campanha ─────────────────────────────────────── */
 .lock-script{font-family:var(--font-script);font-size:clamp(34px,10vw,60px);
   line-height:0.9;color:#e9c987;margin:0 0 -0.08em 0.06em}
@@ -293,7 +310,8 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
 <section class="campo">
   <div class="campo__luz"></div>
   <div class="campo__veu"></div>
-  <div class="campo__in">
+  <div class="campo__in hero-in">
+   <div class="hero-txt">
 
     <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px">
       <span class="pilula">Ao vivo com IA</span>
@@ -304,12 +322,12 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
     <h1 class="lock-h1">Aulas com IA</h1>
     <p class="lock-sub">Do tema bruto a uma <span class="script">aula pronta</span></p>
 
-    <p class="promessa">Sessão 1:1 de 60 minutos. Você chega com um tema e sai com um slide construído na sua frente, com a sua voz, o seu estilo e o método para repetir sozinho na próxima aula.</p>
+    <p class="promessa">Uma hora ao vivo, só você e eu. Você chega com o tema da próxima aula e sai com o material pronto, no seu jeito de ensinar, sabendo refazer sozinho na semana seguinte.</p>
 
     <div class="acao">
       <div>
         <p class="preco">R$ 150<span class="cent">,00</span></p>
-        <p class="preco-nota">Investimento único · 60 min · 1:1</p>
+        <p class="preco-nota">Investimento único · 60 minutos · individual</p>
       </div>
       <!--
         Tracking: nao ha Meta Pixel instalado no projeto.
@@ -324,39 +342,45 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
       </a>
     </div>
 
-    <p class="reforco">Sem curso gravado · sem playlist para assistir depois · trabalho feito junto</p>
+    <p class="reforco">Sem curso gravado · sem vídeo para assistir depois · a gente faz junto, na hora</p>
+   </div>
+
+   <figure class="hero-fig">
+     <img src="/acelerador-personagem.webp" width="760" height="997" fetchpriority="high"
+          alt="Professora sorrindo diante do notebook, com a luz quente da campanha do Acelerador de Aulas.">
+   </figure>
   </div>
 </section>
 
 <!-- ══ 01 · o problema ══ -->
 <section class="sec">
-  <span class="sec-kicker">01 · O problema real</span>
+  <span class="sec-kicker">01 · O que trava você</span>
   <hr class="rule">
-  <h2 class="sec-title">O medo não é a IA. É a aula sair genérica.</h2>
-  <p class="sec-lead">Quem ensina bem tem didática própria, e nenhum texto padrão de chatbot carrega isso. É por aí que a maioria desiste da IA depois da segunda tentativa.</p>
+  <h2 class="sec-title">Você não tem medo da IA. Tem medo de dar uma aula que não parece sua.</h2>
+  <p class="sec-lead">Quem dá aula há anos construiu um jeito próprio de explicar. Os exemplos que funcionam, as perguntas que destravam a turma, a hora certa de parar. Nada disso aparece num texto genérico, e é aí que a maioria desiste da IA na segunda tentativa.</p>
 
   <div class="grid g-240">
     <div class="bp cel">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="cel-rot">Objeção 01</span>
+      <span class="cel-rot">Você já pensou</span>
       <h3 class="cel-titulo">“Vai ficar com cara de ChatGPT”</h3>
-      <p class="cel-texto">O texto sai correto e sem alma: nenhum exemplo seu, nenhuma analogia sua, nenhuma pergunta que só você faria na sala.</p>
+      <p class="cel-texto">Sai tudo certinho e sem vida. Nenhum exemplo da sua área, nenhuma comparação que a sua turma entende, nenhuma pergunta que só você faria.</p>
     </div>
     <div class="bp cel">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="cel-rot">Objeção 02</span>
+      <span class="cel-rot">Você já pensou</span>
       <h3 class="cel-titulo">“É mais um curso que eu não vou ver”</h3>
-      <p class="cel-texto">Fadiga de infoproduto é justa. A pasta de aulas gravadas já está cheia. O que falta é alguém sentar e fazer com você.</p>
+      <p class="cel-texto">Você já comprou curso que ficou parado. A pasta de vídeos está cheia e o tempo continua curto. O que falta não é conteúdo, é alguém sentar e fazer com você.</p>
     </div>
     <div class="bp cel">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <span class="cel-rot">Objeção 03</span>
-      <h3 class="cel-titulo">“Preparar aula consome minha semana”</h3>
-      <p class="cel-texto">Pesquisar, estruturar, montar slide, revisar. O tempo vai embora na parte mecânica, não na parte em que você é bom.</p>
+      <span class="cel-rot">Você já viveu</span>
+      <h3 class="cel-titulo">“Domingo à noite e eu ainda montando slide”</h3>
+      <p class="cel-texto">Pesquisar, procurar imagem, formatar, revisar. O fim de semana vai embora na parte mecânica, justo a parte que não precisa de você.</p>
     </div>
   </div>
 
-  <p class="pull">Isto é uma consultoria prática ao vivo. O trabalho pesado é feito junto, na hora.</p>
+  <p class="pull">Aqui ninguém te explica o que fazer. A gente faz, na sua frente, com a sua aula.</p>
 </section>
 
 <!-- ══ 02 · como funciona ══ -->
@@ -367,61 +391,61 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
   <div class="bp folha">
     <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
     <div class="folha-cab">
-      <span class="flex">Sessão 60' · roteiro operacional</span>
+      <span class="flex">A sua hora, minuto a minuto</span>
       <span>AA-01</span>
-      <span>1:1 ao vivo</span>
+      <span>Ao vivo</span>
       <span>Folha 01 de 01</span>
     </div>
 
     <div class="etapa">
       <span class="etapa-h">0'–10'</span>
-      <h3 class="etapa-t">Diagnóstico</h3>
-      <p class="etapa-d">O que você ensina, para quem e em que formato. Sem isso, qualquer prompt devolve aula de ninguém.</p>
+      <h3 class="etapa-t">A gente conversa</h3>
+      <p class="etapa-d">O que você ensina, para quem e em que formato. É essa conversa que impede a aula de sair com cara de qualquer um.</p>
     </div>
     <div class="etapa">
       <span class="etapa-h">10'–30'</span>
-      <h3 class="etapa-t">Demonstração</h3>
-      <p class="etapa-d">“Monta um slide para eu ver.” Você traz o tema e eu construo na tela, ao vivo, com você olhando cada decisão.</p>
+      <h3 class="etapa-t">Eu monto na sua frente</h3>
+      <p class="etapa-d">Você diz o tema da próxima aula e eu construo o material ali, com você olhando, explicando cada escolha enquanto faço.</p>
     </div>
     <div class="etapa">
       <span class="etapa-h">30'–60'</span>
-      <h3 class="etapa-t">Como eu faço</h3>
-      <p class="etapa-d">Abro o método: Claude Design para fixar identidade, voz e estilo da sua aula; Claude Chat para pesquisar e produzir dentro desse padrão. Você replica na semana seguinte.</p>
+      <h3 class="etapa-t">Você aprende o caminho</h3>
+      <p class="etapa-d">Refaço o passo a passo devagar, do começo ao fim, até você conseguir repetir sozinho na aula seguinte. Sem decorar comando nenhum.</p>
     </div>
 
-    <p class="folha-pe">A ordem é fixa porque o diagnóstico alimenta a demonstração, e a demonstração é o que torna o método reproduzível.</p>
+    <p class="folha-pe">A ordem não muda: primeiro eu entendo a sua aula, depois eu construo, depois você aprende a repetir.</p>
   </div>
 </section>
 
 <!-- ══ 03 · entregáveis ══ -->
 <section class="sec" style="padding-top:0">
-  <span class="sec-kicker">03 · O que você leva</span>
+  <span class="sec-kicker">03 · O que você leva embora</span>
   <hr class="rule">
 
   <div class="grid g-220">
     <div class="bp cel">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <span class="cel-num">01</span>
-      <h3 class="cel-titulo">O slide construído na sessão</h3>
-      <p class="cel-texto">Pronto para usar na próxima turma. Não é um exemplo, é a sua aula.</p>
+      <h3 class="cel-titulo">O material da sua próxima aula</h3>
+      <p class="cel-texto">Pronto para usar na turma de segunda. Não é um exemplo qualquer, é a sua aula mesmo.</p>
     </div>
     <div class="bp cel">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <span class="cel-num">02</span>
-      <h3 class="cel-titulo">A identidade da sua aula</h3>
-      <p class="cel-texto">Voz, estilo e padrão visual definidos, para tudo o que vier depois sair com a sua cara.</p>
+      <h3 class="cel-titulo">O seu jeito, registrado</h3>
+      <p class="cel-texto">Voz, exemplos e estilo anotados, para tudo que você criar depois já nascer com a sua cara.</p>
     </div>
     <div class="bp cel">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <span class="cel-num">03</span>
-      <h3 class="cel-titulo">O roteiro do método</h3>
-      <p class="cel-texto">A sequência que usei na sua frente, escrita, para você repetir sem depender de mim.</p>
+      <h3 class="cel-titulo">O passo a passo escrito</h3>
+      <p class="cel-texto">A mesma sequência que usei na sua frente, no papel, para você refazer sem depender de mim.</p>
     </div>
     <div class="bp cel">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <span class="cel-num">04</span>
-      <h3 class="cel-titulo">A gravação da sessão</h3>
-      <p class="cel-texto">Para rever a decisão exata quando travar no meio de uma aula nova.</p>
+      <h3 class="cel-titulo">A gravação da nossa hora</h3>
+      <p class="cel-texto">Para você voltar no ponto exato quando travar no meio de uma aula nova.</p>
     </div>
   </div>
 </section>
@@ -432,12 +456,12 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
   <hr class="rule">
   <h2 class="sec-title" style="margin-top:22px">Rodrigo Peixoto</h2>
   <p class="script" style="font-size:clamp(28px,7vw,38px);line-height:1;color:var(--color-accent-700);margin:8px 0 0">não ensino IA, ensino a sua aula a ficar pronta</p>
-  <p class="sec-lead" style="max-width:54ch">Trabalho com professores, educadores e formadores que já sabem ensinar e só perdem tempo na produção. Na sessão eu não passo teoria: eu opero as ferramentas na sua frente, com o seu tema, e explico cada escolha enquanto a aula é montada.</p>
+  <p class="sec-lead" style="max-width:54ch">Trabalho com professores, educadores e formadores que já sabem dar aula e só perdem tempo montando material. Eu não dou teoria e não mando lição de casa. Eu mexo nas ferramentas na sua frente, com o seu tema, explicando cada escolha enquanto a aula fica pronta.</p>
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
-    <span class="tag tag-outline">Claude Design</span>
-    <span class="tag tag-outline">Claude Chat</span>
-    <span class="tag tag-outline">Design instrucional</span>
-    <span class="tag tag-accent">1:1 ao vivo</span>
+    <span class="tag tag-outline">Uma hora</span>
+    <span class="tag tag-outline">Ao vivo</span>
+    <span class="tag tag-outline">Individual</span>
+    <span class="tag tag-accent">Material pronto no fim</span>
   </div>
 </section>
 
@@ -485,33 +509,33 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
 
 <!-- ══ 05 · FAQ ══ -->
 <section class="sec" style="padding-top:0">
-  <span class="sec-kicker">05 · Perguntas diretas</span>
+  <span class="sec-kicker">05 · O que costumam me perguntar</span>
   <hr class="rule">
 
   <div class="faq">
     <details>
       <summary>A aula não vai ficar com cara de robô? <span class="mais" aria-hidden="true">+</span></summary>
-      <p>Só fica se você pedir aula genérica. Os primeiros 10 minutos existem justamente para registrar o que é seu: público, formato, exemplos, jeito de explicar. A identidade que montamos passa a limitar tudo o que a IA devolve depois.</p>
+      <p>Só fica se a gente pedir aula genérica. Os primeiros dez minutos servem justamente para registrar o que é seu: a sua turma, os seus exemplos, o seu jeito de explicar. Depois disso, tudo que sai já vem dentro desse molde.</p>
     </details>
     <details>
       <summary>É um curso gravado? <span class="mais" aria-hidden="true">+</span></summary>
-      <p>Não. São 60 minutos ao vivo, só nós dois, com a sua aula sendo construída. Nada para assistir depois. A única gravação que existe é a da sua própria sessão.</p>
+      <p>Não. É uma hora ao vivo, só nós dois, com a sua aula sendo montada. Não tem vídeo para assistir depois nem módulo para completar. A única gravação que existe é a da nossa conversa.</p>
     </details>
     <details>
       <summary>Preciso saber usar IA? <span class="mais" aria-hidden="true">+</span></summary>
-      <p>Não. Quem opera as ferramentas na sessão sou eu, com você acompanhando. Se você nunca abriu um chat de IA, melhor ainda: aprende o caminho certo antes de criar vício de prompt.</p>
+      <p>Não. Quem mexe nas ferramentas sou eu, com você acompanhando. Se você nunca abriu uma IA na vida, melhor ainda: aprende o caminho certo antes de pegar mania errada.</p>
     </details>
     <details>
       <summary>Serve para o meu formato de aula? <span class="mais" aria-hidden="true">+</span></summary>
-      <p>Serve para aula presencial, ao vivo online, treinamento corporativo, curso gravado e oficina. O diagnóstico começa exatamente por aí: o que você ensina, para quem e em que formato.</p>
+      <p>Serve para aula presencial, aula online, treinamento em empresa, curso gravado e oficina. A conversa começa exatamente por aí: o que você ensina, para quem e em que formato.</p>
     </details>
     <details>
-      <summary>Dá tempo de fazer algo útil em 60 minutos? <span class="mais" aria-hidden="true">+</span></summary>
-      <p>O roteiro é cronometrado por isso. Em 20 minutos existe slide na tela; nos 30 finais você entende como aquilo foi feito. Sessão sem entrega concreta é sessão perdida.</p>
+      <summary>Dá tempo de fazer algo útil em uma hora? <span class="mais" aria-hidden="true">+</span></summary>
+      <p>A hora é cronometrada por isso. Em vinte minutos já existe material na tela. Na última meia hora você entende como aquilo foi feito. Hora sem material pronto no fim é hora perdida.</p>
     </details>
     <details>
       <summary>E depois da sessão? <span class="mais" aria-hidden="true">+</span></summary>
-      <p>Você sai com material para repetir sozinho. Se quiser aprofundar em mentoria, conversamos. Mas a sessão de 60 minutos se resolve por si, e é assim que ela é vendida.</p>
+      <p>Você sai com o que precisa para repetir sozinho. Se depois quiser um acompanhamento mais longo, a gente conversa. Mas essa hora se resolve nela mesma, e é assim que ela é vendida.</p>
     </details>
   </div>
 </section>
@@ -523,7 +547,7 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
   <div class="campo__in">
     <p class="lock-script" style="font-size:clamp(30px,8vw,48px)">Traga um tema</p>
     <h2 class="lock-h1" style="font-size:clamp(34px,10vw,72px);line-height:0.98;max-width:20ch">Saia com a aula pronta</h2>
-    <p class="promessa" style="max-width:52ch">Uma mensagem no WhatsApp, escolhemos o horário e você já chega na sessão com o tema definido.</p>
+    <p class="promessa" style="max-width:52ch">Me manda uma mensagem no WhatsApp. A gente marca o horário e você já chega com o tema da aula escolhido.</p>
 
     <div class="acao">
       <a class="cta cta--lg bp bp--light" data-evento="cta-whatsapp" data-origem="fechamento"
@@ -534,7 +558,7 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
       </a>
       <div>
         <p class="preco" style="font-size:32px">R$ 150<span class="cent">,00</span></p>
-        <p class="preco-nota" style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px">60 min · 1:1 · ao vivo</p>
+        <p class="preco-nota" style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px">60 minutos · individual · ao vivo</p>
       </div>
     </div>
   </div>
