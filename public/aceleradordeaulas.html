@@ -352,9 +352,9 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
         <p class="preco-nota">Investimento único · 60 minutos · individual</p>
       </div>
       <!--
-        Tracking: nao ha Meta Pixel instalado no projeto.
-        Todo CTA carrega data-evento="cta-whatsapp" e data-origem.
-        Para plugar depois: fbq('track','Lead',{origem: el.dataset.origem}).
+        Tracking: Meta Pixel instalado no <head>.
+        Todo CTA carrega data-evento="cta-whatsapp" e data-origem;
+        o disparo real (evento padrao Contact) fica no <script> antes de </body>.
       -->
       <a class="cta cta--lg" data-evento="cta-whatsapp" data-origem="hero"
          href="https://wa.me/5585989179397?text=Oi%20Rodrigo%2C%20quero%20agendar%20o%20Acelerador%20de%20Aulas%20com%20IA"
@@ -591,12 +591,14 @@ src="https://www.facebook.com/tr?id=2486425151839220&ev=PageView&noscript=1"
 </footer>
 
 <script>
-// Dispara o Lead do Meta Pixel em qualquer CTA da página, sem atrasar
+// Dispara o Contact do Meta Pixel em qualquer CTA da página, sem atrasar
 // a saída para o WhatsApp (target="_blank" já abre em nova aba).
+// Trocado de Lead para Contact: o Gerenciador de Anúncios bloqueava o
+// objetivo da campanha com o evento anterior.
 document.querySelectorAll('[data-evento="cta-whatsapp"]').forEach(function (el) {
   el.addEventListener('click', function () {
     if (typeof fbq === 'function') {
-      fbq('track', 'Lead', { content_name: 'acelerador-de-aulas', origem: el.dataset.origem || '' });
+      fbq('track', 'Contact', { content_name: 'acelerador-de-aulas', origem: el.dataset.origem || '' });
     }
   });
 });
