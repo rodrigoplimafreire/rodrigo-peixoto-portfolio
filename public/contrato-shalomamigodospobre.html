@@ -108,6 +108,10 @@ nav ul a{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppe
   color:var(--fog);transition:color .3s}
 nav ul a:hover{color:var(--blue)}
 nav .btn{padding:10px 20px}
+/* No celular os quatro links não cabem ao lado do botão: quebram em duas
+   linhas e a barra passa por cima do texto. Fica só logo + Imprimir, e a
+   navegação se faz rolando — o documento é linear. */
+@media(max-width:720px){nav ul li.oculto-mobile{display:none}}
 
 /* ── selo de minuta ───────────────────────────────────────────── */
 .selo{display:inline-flex;align-items:center;gap:10px;
@@ -429,10 +433,10 @@ footer .wrap{display:grid;gap:26px}
       <img src="/logo.png" alt="Rodrigo Peixoto">
     </a>
     <ul>
-      <li><a href="#resumo">Resumo</a></li>
-      <li><a href="#contrato">Contrato</a></li>
-      <li><a href="#anexo">Anexo I</a></li>
-      <li><a href="#assinaturas">Assinaturas</a></li>
+      <li class="oculto-mobile"><a href="#resumo">Resumo</a></li>
+      <li class="oculto-mobile"><a href="#contrato">Contrato</a></li>
+      <li class="oculto-mobile"><a href="#anexo">Anexo I</a></li>
+      <li class="oculto-mobile"><a href="#assinaturas">Assinaturas</a></li>
       <li>
         <button type="button" class="btn btn--solido" data-imprimir>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
