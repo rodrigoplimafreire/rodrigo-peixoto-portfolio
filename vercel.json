@@ -16,7 +16,8 @@
     { "source": "/reginato-ads/:path*", "destination": "https://proposta-reginato-ads.vercel.app/:path*" },
     { "source": "/raio-x", "destination": "/raio-x.html" },
     { "source": "/aceleradordeaulas", "destination": "/aceleradordeaulas.html" },
-    { "source": "/contrato-shalomamigodospobre", "destination": "/contrato-shalomamigodospobre.html" }
+    { "source": "/contrato-shalomamigodospobre", "destination": "https://contrato-shalom-amigos-dos-pobres.vercel.app" },
+    { "source": "/contrato-shalomamigodospobre/:path*", "destination": "https://contrato-shalom-amigos-dos-pobres.vercel.app/:path*" }
   ],
   "headers": [
     {
@@ -24,7 +25,7 @@
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     },
     {
-      "source": "/contrato-shalomamigodospobre.html",
+      "source": "/contrato-shalomamigodospobre/(.*)",
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     }
   ]
